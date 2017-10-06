@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class PlayerLocomotarTest : MonoBehaviour
 {
-    Rigidbody rb;
+    Rigidbody2D rb2d;
+    private Dictionary<string, int> moveDirection = new Dictionary<string, int>();
+    private Vector2 playerVelocity;
     [SerializeField]
     private float moveSpeed = 3f;
+    private Vector2 HorizontalMoveVelocity;
     [SerializeField]
-    private float rotationSpeed = 1f;
+    private float jumpPower = 30f;
+    private Vector2 JumpMoveVelocity;
+    [SerializeField]
+    private float rotationSpeed = 3f;
     private bool rotationTrigger = false;
     private int rotationDir;
-    private Dictionary<string, int> moveDirection = new Dictionary<string, int>();
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb2d = GetComponent<Rigidbody2D>();
         moveDirection.Add("left", -1);
         moveDirection.Add("right", 1);
+        moveDirection.Add("pause", 0);
+        playerVelocity = Vector2.zero;
     }
 
     void Update()
@@ -38,22 +45,37 @@ public class PlayerLocomotarTest : MonoBehaviour
             RotateAroundUpAxis(rotationDir);
         }
 
-        Debug.Log(rotationTrigger);
-
         //　移動処理
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            HorizontalMove(moveDirection["left"]);
+            transform.Translate(moveDirection["right"] * moveSpeed * Time.deltaTime, 0, 0, Space.World);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            HorizontalMove(moveDirection["right"]);
+            transform.Translate(moveDirection["left"] * moveSpeed * Time.deltaTime, 0, 0, Space.World);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        // ジャンプ処理
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            JumpMove();
+        }
+
+        //rb2d.velocity = playerVelocity;
     }
 
     private void HorizontalMove(int dir)
     {
-        rb.velocity = Vector2.left * dir * moveSpeed;
+        HorizontalMoveVelocity = Vector2.left * dir * moveSpeed;
+        playerVelocity += HorizontalMoveVelocity;
+    }
+
+    private void JumpMove()
+    {
+        rb2d.AddForce(Vector2.up * jumpPower);
     }
 
     private void RotateAroundUpAxis(int dir)

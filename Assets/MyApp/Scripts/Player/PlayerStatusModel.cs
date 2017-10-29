@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStatusModel : MonoBehaviour
 {
+    // 初期化用の変数
     [SerializeField]
     private float hitPoint = 100f;
     [SerializeField]

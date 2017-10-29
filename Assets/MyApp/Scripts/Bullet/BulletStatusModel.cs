@@ -5,4 +5,11 @@ using UnityEngine;
 public class BulletStatusModel : MonoBehaviour
 {
     public float BulletPower { get; set; }
+    public string ShootOwnerTagName { get; set; }
+
+    private void Start()
+    {
+        BulletPower = 0;
+        ShootOwnerTagName = "";
+    }
 }

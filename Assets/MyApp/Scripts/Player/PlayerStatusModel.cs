@@ -24,10 +24,10 @@ public class PlayerStatusModel : MonoBehaviour
     private void Start()
     {
         // Statusの初期化処理
-        PlayerStatusInitialization();
+        ModelInitialization();
     }
 
-    public void PlayerStatusInitialization()
+    public void ModelInitialization()
     {
         HitPoint = hitPoint;
         MoveSpeed = moveSpeed;

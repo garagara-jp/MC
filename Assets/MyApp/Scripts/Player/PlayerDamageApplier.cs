@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamageApplier : MonoBehaviour {
+public class PlayerDamageApplier : MonoBehaviour, IDamageable
+{
+    PlayerStatusModel model;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        model = GetComponent<PlayerStatusModel>();
+    }
+
+    public void ApplyDamage(Damage damage)
+    {
+        model.HitPoint -= damage.DamageAmount;
+        Debug.Log(gameObject.tag + " Left HP : " + model.HitPoint);
+    }
 }

@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageApplier : MonoBehaviour {
+public class EnemyDamageApplier : MonoBehaviour, IDamageable
+{
+    EnemyStatusModel model;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        model = GetComponent<EnemyStatusModel>();
+    }
+
+    public void ApplyDamage(Damage damage)
+    {
+        model.HitPoint -= damage.DamageAmount;
+        Debug.Log("Attack is Hit : Damage = " + damage.DamageAmount);
+        Debug.Log("Left HP : " + model.HitPoint);
+    }
 }

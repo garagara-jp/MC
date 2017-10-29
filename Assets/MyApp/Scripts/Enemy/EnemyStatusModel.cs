@@ -2,15 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStatusModel : MonoBehaviour {
+public class EnemyStatusModel : MonoBehaviour
+{
+    [SerializeField]
+    private float hitPoint = 100f;
+    [SerializeField]
+    private float moveSpeed = 5f;
+    [SerializeField]
+    private float rotationSpeed = 5f;
+    [SerializeField]
+    private float jumpPower = 400f;
+    [SerializeField]
+    private float enemyMoney = 100;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public float HitPoint { get; set; }
+    public float MoveSpeed { get; set; }
+    public float RotationSpeed { get; set; }
+    public float JumpPower { get; set; }
+    public float EnemyMoney { get; set; }
+
+    private void Start()
+    {
+        // Statusの初期化処理
+        ModelInitialization();
+    }
+
+    public void ModelInitialization()
+    {
+        HitPoint = hitPoint;
+        MoveSpeed = moveSpeed;
+        RotationSpeed = rotationSpeed;
+        JumpPower = jumpPower;
+        EnemyMoney = enemyMoney;
+    }
 }

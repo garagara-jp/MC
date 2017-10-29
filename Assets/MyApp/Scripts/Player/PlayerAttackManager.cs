@@ -19,7 +19,11 @@ public class PlayerAttackManager : MonoBehaviour
         // 攻撃処理
         if (Input.GetKey(KeyCode.Z))
         {
-            ShotBullet(playerWeaponModel.AttackInterval, playerWeaponModel.BulletPrefab, playerWeaponModel.BulletPower, playerWeaponModel.BulletSpeed);
+            ShotBullet(playerWeaponModel.AttackInterval,
+                playerWeaponModel.BulletPrefab,
+                playerWeaponModel.BulletPower,
+                gameObject.tag,
+                playerWeaponModel.BulletSpeed);
         }
         else
         {
@@ -27,7 +31,7 @@ public class PlayerAttackManager : MonoBehaviour
         }
     }
 
-    private void ShotBullet(float attackInterval, GameObject bulletPrefab, float bulletPower, float bulletSpeed)
+    private void ShotBullet(float attackInterval, GameObject bulletPrefab, float bulletPower, string myTagName, float bulletSpeed)
     {
         elapsedTime -= Time.fixedDeltaTime;
         if (elapsedTime <= 0.0f)
@@ -35,16 +39,20 @@ public class PlayerAttackManager : MonoBehaviour
             elapsedTime = attackInterval;
 
             // bulletを生成
-            var bulletPos = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y / 2), transform.position.z);
+            var bulletPos = new Vector3(transform.position.x, transform.position.y + transform.localScale.y * 2, transform.position.z);
             var bulletRota = bulletPrefab.transform.rotation;
             GameObject bullet = Instantiate(bulletPrefab, bulletPos, bulletRota);
 
             // bulletのstatusを設定
-            bullet.GetComponent<BulletStatusModel>().BulletPower = bulletPower;
+            var model = bullet.GetComponent<BulletStatusModel>();
+            model.BulletPower = bulletPower;
+            model.ShootOwnerTagName = myTagName;
 
             // 射出
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.velocity += Vector2.up * bulletSpeed;
+
+            //bullet.GetComponent<CircleCollider2D>().enabled = true;
         }
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Enemyをアタッチ
-/// HPが0になったEnemyからMoneyを放出
+/// Playerにアタッチ
+/// フィールド上のMoneyを収集
 /// </summary>
-public class MoneyEmitter : MonoBehaviour
+public class MoneyCollector : MonoBehaviour
 {
 
 }

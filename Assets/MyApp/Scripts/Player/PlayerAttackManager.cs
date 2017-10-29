@@ -39,7 +39,7 @@ public class PlayerAttackManager : MonoBehaviour
             elapsedTime = attackInterval;
 
             // bulletを生成
-            var bulletPos = new Vector3(transform.position.x, transform.position.y + transform.localScale.y * 2, transform.position.z);
+            var bulletPos = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
             var bulletRota = bulletPrefab.transform.rotation;
             GameObject bullet = Instantiate(bulletPrefab, bulletPos, bulletRota);
 
@@ -51,8 +51,6 @@ public class PlayerAttackManager : MonoBehaviour
             // 射出
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.velocity += Vector2.up * bulletSpeed;
-
-            //bullet.GetComponent<CircleCollider2D>().enabled = true;
         }
     }
 }

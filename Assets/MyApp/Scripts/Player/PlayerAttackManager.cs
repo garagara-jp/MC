@@ -13,11 +13,6 @@ public class PlayerAttackManager : MonoBehaviour
         elapsedTime = 0f;
     }
 
-    private void Update()
-    {
-        Debug.Log(elapsedTime);
-    }
-
     private void FixedUpdate()
     {
 

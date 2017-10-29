@@ -690,9 +690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 1
-  bulletPrafab: {fileID: 0}
+  bulletPrafab: {fileID: 1050548468269808, guid: 387e8ff1a596c5c448899883c6b733bb,
+    type: 2}
   bulletPower: 10
-  bulletSpeed: 3
+  bulletSpeed: 10
   attackInterval: 0.3
 --- !u!114 &1207654743
 MonoBehaviour:
@@ -721,48 +722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7031b474937a6c042adb591f9ed1ac28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1770542874
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.49874482
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.43624854
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278570348533880, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 387e8ff1a596c5c448899883c6b733bb, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1908843886
 GameObject:
   m_ObjectHideFlags: 0

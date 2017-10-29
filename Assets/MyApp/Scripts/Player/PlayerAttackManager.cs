@@ -13,11 +13,16 @@ public class PlayerAttackManager : MonoBehaviour
         elapsedTime = 0f;
     }
 
+    private void Update()
+    {
+        Debug.Log(elapsedTime);
+    }
+
     private void FixedUpdate()
     {
 
         // 攻撃処理
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z))
         {
             ShotBullet(playerWeaponModel.AttackInterval, playerWeaponModel.BulletPrefab, playerWeaponModel.BulletPower, playerWeaponModel.BulletSpeed);
         }
@@ -36,7 +41,7 @@ public class PlayerAttackManager : MonoBehaviour
 
             // bulletを生成
             var bulletPos = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y / 2), transform.position.z);
-            var bulletRota = transform.rotation;
+            var bulletRota = bulletPrefab.transform.rotation;
             GameObject bullet = Instantiate(bulletPrefab, bulletPos, bulletRota);
 
             // bulletのstatusを設定

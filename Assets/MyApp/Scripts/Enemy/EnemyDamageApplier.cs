@@ -14,7 +14,6 @@ public class EnemyDamageApplier : MonoBehaviour, IDamageable
     public void ApplyDamage(Damage damage)
     {
         model.HitPoint -= damage.DamageAmount;
-        Debug.Log("Attack is Hit : Damage = " + damage.DamageAmount);
-        Debug.Log("Left HP : " + model.HitPoint);
+        Debug.Log(gameObject.tag + " Left HP : " + model.HitPoint);
     }
 }

@@ -13,7 +13,7 @@ public class StateBase : MonoBehaviour
     // このステートである間、毎フレーム呼ばれる
     public virtual void Execute() { }
 
-    // このステートである間、固定感覚で呼ばれる
+    // このステートである間、固定間隔で呼ばれる
     public virtual void FixedExecute() { }
 
     // このステートから他のステートに遷移するときに一度だけ呼ばれる

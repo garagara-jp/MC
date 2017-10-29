@@ -7,72 +7,52 @@ using UnityEngine;
 /// </summary>
 public class StateAttack : StateBase
 {
-    [SerializeField]
+    EnemyAttackModel attackModel;
     StateMachine stateMachine;
     [SerializeField]
-    StateWander stateWander;
-
-    [SerializeField]
     private GameObject player;
-
-    [SerializeField]
-    private float rotationSmooth = 1f;
-    [SerializeField]
-    private float moveSpeed = 10f;
-    [SerializeField]
-    private float attackInterval = 2f;
-    private float lastAttackTime;
-    [SerializeField]
-    private float margin = 50f;
-    [SerializeField]
-    GameObject bulletPrefab;
-    GameObject bulletClone;
-    [SerializeField]
-    GameObject muzzle;
-    [SerializeField]
-    private float bulletSpeed = 250f;
-    [SerializeField]
-    private float pursuitSqrDistance = 2500f;
+    private float elapsedTime;
 
     public override void Enter()
     {
+        attackModel = GetComponent<EnemyAttackModel>();
+        stateMachine = GetComponent<StateMachine>();
+        if (player == null)
+            player = GameObject.FindWithTag("Player");
+
         //Debug.Log("Attackステートに遷移しました");
-    }
-
-    public override void Execute()
-    {
-        // プレイヤーとの距離を計算
-        float sqrDistanceToPlayer = Vector3.SqrMagnitude(transform.position - player.transform.position);
-
-        // プレイヤーの方向を向く
-        Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
-
-        // 前方に進む
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-
-        // 一定間隔で弾丸を発射する
-        if (Time.time > lastAttackTime + Random.Range(attackInterval, attackInterval + 0.5f))
-        {
-            bulletClone = Instantiate(bulletPrefab, muzzle.transform.position, muzzle.transform.rotation);
-            lastAttackTime = Time.time;
-        }
-
-        // プレイヤーとの距離が大きければ、徘徊ステートに遷移
-        if (sqrDistanceToPlayer > pursuitSqrDistance + margin)
-        {
-            stateMachine.ChangeState(stateWander);
-        }
     }
 
     public override void FixedExecute()
     {
-        if (bulletClone != null)
-        {
-            Rigidbody rb = bulletClone.GetComponent<Rigidbody>();
-            rb.velocity = bulletClone.transform.forward * bulletSpeed;
-        }
+        ShotBullet(attackModel.AttackInterval,
+            attackModel.BulletPrefab,
+            attackModel.BulletPower,
+            gameObject.tag,
+            attackModel.BulletSpeed);
     }
 
-    public override void Exit() { }
+    private void ShotBullet(float attackInterval, GameObject bulletPrefab, float bulletPower, string myTagName, float bulletSpeed)
+    {
+        elapsedTime -= Time.fixedDeltaTime;
+        if (elapsedTime <= 0.0f)
+        {
+            elapsedTime = Random.Range(attackModel.AttackInterval - 0.4f, attackModel.AttackInterval + 0.4f);
+
+            // bulletを生成
+            var bulletPos = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
+            var bulletRota = bulletPrefab.transform.rotation;
+            GameObject bullet = Instantiate(bulletPrefab, bulletPos, bulletRota);
+
+            // bulletのstatusを設定
+            var bulletModel = bullet.GetComponent<BulletStatusModel>();
+            bulletModel.BulletPower = attackModel.BulletPower;
+            bulletModel.ShootOwnerTagName = myTagName;
+
+            // プレイヤーに向けて射出
+            var targetVec = Vector3.Normalize(player.transform.position - transform.position) * bulletSpeed;
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.velocity += new Vector2(targetVec.x, targetVec.y);
+        }
+    }
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ステートマシーン
+/// Enemyにタッチする
+/// ステートマシーンとしてステートの変更を管理
 /// </summary>
 public class StateMachine : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class StateMachine : MonoBehaviour
         //Debug.Log($"ステートマシーンにより{state}ステートに変更されました");
     }
 
-    public void Update()
+    private void Update()
     {
         if (currentState != null)
         {
@@ -38,7 +39,7 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         if (currentState != null)
         {

@@ -21,7 +21,7 @@ public class BulletDamageManager : MonoBehaviour
     {
         // 弾が射出したGameObjectにダメージ判定を適用しないように判定
         if (col.gameObject.tag == model.ShootOwnerTagName)
-        {
+        { 
             return;
         }
 

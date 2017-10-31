@@ -91,7 +91,7 @@ MonoBehaviour:
     type: 2}
   bulletPower: 10
   bulletSpeed: 3
-  attackInterval: 0.3
+  attackInterval: 1
 --- !u!114 &114204932045246874
 MonoBehaviour:
   m_ObjectHideFlags: 1

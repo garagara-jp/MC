@@ -1,16 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
+    PlayerStatusModel playerStatusModel;
+    TimeManager timeManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    GameObject player;
+
+    [SerializeField]
+    Text playerGoldValue;
+    [SerializeField]
+    Text limitTImeValue;
+
+    private void Start()
+    {
+        if(player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
+
+        playerStatusModel = player.GetComponent<PlayerStatusModel>();
+        timeManager = GetComponent<TimeManager>();
+    }
+
+    private void Update()
+    {
+        playerGoldValue.text = playerStatusModel.PlayerMoney.ToString();
+        limitTImeValue.text = Mathf.FloorToInt(timeManager.RemainingTIme).ToString();
+    }
 }

@@ -19,9 +19,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         if(player == null)
-        {
             player = GameObject.FindWithTag("Player");
-        }
 
         playerStatusModel = player.GetComponent<PlayerStatusModel>();
         timeManager = GetComponent<TimeManager>();
@@ -29,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        playerGoldValue.text = playerStatusModel.PlayerMoney.ToString();
-        limitTImeValue.text = Mathf.FloorToInt(timeManager.RemainingTIme).ToString();
+        playerGoldValue.text = "￥" + playerStatusModel.PlayerMoney.ToString();
+        limitTImeValue.text = Mathf.CeilToInt(timeManager.RemainingTIme).ToString();
     }
 }

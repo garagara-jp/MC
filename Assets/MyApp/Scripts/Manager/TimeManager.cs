@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour
     private float gameStartTime;
     private float elapsedTime;
     private float remainingTime;
+    private float limitTime;
 
     public float GameStartTime { get { return gameStartTime; } }
     public float ElapsedTime { get { return elapsedTime; } }
@@ -17,15 +18,16 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        elapsedTime = Time.time - gameStartTime;
-        remainingTime -= elapsedTime;
+        if (gameStartTime != 0)
+        {
+            elapsedTime = Time.time - gameStartTime;
+        }
+        remainingTime = limitTime - elapsedTime;
     }
 
     public void StartGame(float limitTime)
     {
         gameStartTime = Time.time;
-        remainingTime = limitTime;
+        this.limitTime = limitTime;
     }
-
-
 }

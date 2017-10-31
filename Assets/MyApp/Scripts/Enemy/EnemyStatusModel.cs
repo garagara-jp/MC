@@ -20,11 +20,18 @@ public class EnemyStatusModel : MonoBehaviour
     public float RotationSpeed { get; set; }
     public float JumpPower { get; set; }
     public float EnemyMoney { get; set; }
+    public bool IsDead { get; set; }
 
     private void Start()
     {
         // Statusの初期化処理
         ModelInitialization();
+    }
+
+    private void Update()
+    {
+        if (HitPoint <= 0)
+            IsDead = true;
     }
 
     public void ModelInitialization()
@@ -34,5 +41,6 @@ public class EnemyStatusModel : MonoBehaviour
         RotationSpeed = rotationSpeed;
         JumpPower = jumpPower;
         EnemyMoney = enemyMoney;
+        IsDead = false;
     }
 }

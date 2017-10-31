@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyStatusModel : MonoBehaviour {
+public class MoneyStatusModel : MonoBehaviour
+{
+    [SerializeField]
+    private float moneyValue = 10;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public float MoneyValue { get; set; }
+
+    private void Start()
+    {
+        // Statusの初期化処理
+        ModelInitialization();
+    }
+
+    public void ModelInitialization()
+    {
+        MoneyValue = moneyValue;
+    }
 }

@@ -39,11 +39,11 @@ public class MoneyEmitter : MonoBehaviour
         if (enemyStatusModel.IsDead && !moneyIsEmitted)
         {
             // インターフェースからMoneyのValueをセット
-            var haveMoney = moneyPrefab.GetComponent<IHaveMoney>();
-            if (haveMoney != null)
+            var setableMoney = moneyPrefab.GetComponent<ISetableMoney>();
+            if (setableMoney != null)
             {
                 var moneyValue = enemyStatusModel.EnemyMoney;
-                haveMoney.SetMoneyValue(moneyValue);
+                setableMoney.SetMoneyValue(moneyValue);
             }
 
             // MoneyのRendererをONに

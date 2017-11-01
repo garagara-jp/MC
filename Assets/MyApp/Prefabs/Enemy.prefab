@@ -21,15 +21,17 @@ GameObject:
   - component: {fileID: 4785385243690140}
   - component: {fileID: 212586394609869388}
   - component: {fileID: 50694993515813092}
+  - component: {fileID: 58633569455171252}
   - component: {fileID: 114683914171905508}
   - component: {fileID: 114676188954331274}
-  m_Layer: 0
+  - component: {fileID: 114240456076778810}
+  m_Layer: 12
   m_Name: EnemyCoin
   m_TagString: Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1796701664385754
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,7 +50,8 @@ GameObject:
   - component: {fileID: 114719821222740398}
   - component: {fileID: 114011849971198690}
   - component: {fileID: 114934938895109776}
-  m_Layer: 0
+  - component: {fileID: 114120957665980172}
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,7 +104,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!58 &58633569455171252
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419640493390556}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.6349999
 --- !u!58 &58826350931974732
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -139,6 +157,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b6ba6191ad02d4aa511818fd1a948a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114120957665980172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796701664385754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b6ffa060c567e41b0472632d581afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114127551639012724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,12 +179,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edf30c32ff746644abc01dfd41c92b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 100
+  hitPoint: 10
   moveSpeed: 5
   rotationSpeed: 5
   jumpPower: 400
   enemyMoney: 100
   isDead: 0
+--- !u!114 &114240456076778810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419640493390556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e555208f19f4ff148a36a44992c0a176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114247691454954030
 MonoBehaviour:
   m_ObjectHideFlags: 1

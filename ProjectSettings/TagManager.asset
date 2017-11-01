@@ -16,11 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FloorLayer
+  - PlayerLayer
+  - DamagedPlayerLayer
+  - EnemyLayer
+  - MoneyLayer
   - 
   - 
   - 

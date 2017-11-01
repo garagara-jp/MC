@@ -32,7 +32,6 @@ public class MoneyEmitter : MonoBehaviour
             Debug.Log(moneyRb2D.simulated);
         }
 
-
         moneyIsEmitted = false;
     }
 
@@ -40,16 +39,19 @@ public class MoneyEmitter : MonoBehaviour
     {
         if (enemyStatusModel.IsDead && !moneyIsEmitted)
         {
+            // インターフェースからMoneyのValueをセット
             var haveMoney = moneyPrefab.GetComponent<IHaveMoney>();
             if (haveMoney != null)
             {
                 var moneyValue = enemyStatusModel.EnemyMoney;
                 haveMoney.SetMoneyValue(moneyValue);
             }
+
+            // MoneyのRendererをONに
             moneySpriteRenderer.enabled = true;
 
-            // Moneyの子オブジェクトを解除
-            transform.DetachChildren();
+            // ModelのboolをOFFに
+            enemyStatusModel.IsHaveMoney = false;
 
             moneyIsEmitted = true;
         }

@@ -23,6 +23,7 @@ public class EnemyStatusModel : MonoBehaviour
     public float JumpPower { get; set; }
     public float EnemyMoney { get; set; }
     public bool IsDead { get; set; }
+    public bool IsHaveMoney { get; set; }
 
     private void Start()
     {
@@ -46,5 +47,6 @@ public class EnemyStatusModel : MonoBehaviour
         JumpPower = jumpPower;
         EnemyMoney = enemyMoney;
         IsDead = false;
+        IsHaveMoney = true;
     }
 }

@@ -29,7 +29,6 @@ public class MoneyEmitter : MonoBehaviour
             moneySpriteRenderer.enabled = false;
             moneyRb2D = moneyPrefab.GetComponent<Rigidbody2D>();
             moneyRb2D.simulated = false;
-            Debug.Log(moneyRb2D.simulated);
         }
 
         moneyIsEmitted = false;
@@ -49,10 +48,7 @@ public class MoneyEmitter : MonoBehaviour
 
             // MoneyのRendererをONに
             moneySpriteRenderer.enabled = true;
-
-            // ModelのboolをOFFに
-            enemyStatusModel.IsHaveMoney = false;
-
+            
             moneyIsEmitted = true;
         }
     }
@@ -64,11 +60,14 @@ public class MoneyEmitter : MonoBehaviour
             moneyRb2D.simulated = true;
 
             // ランダムな方向に射出
-            var targetVec = new Vector2((UnityEngine.Random.Range(-1, 1) >= 0) ? 1 : -1, UnityEngine.Random.Range(-1, 5));
+            var targetVec = new Vector2((UnityEngine.Random.Range(-1, 1) >= 0) ? 1 : -1, UnityEngine.Random.Range(1, 3));
             moneyRb2D.velocity = targetVec;
 
             // Cloneオブジェクトをnull値に
             moneyPrefab = null;
+
+            // ModelのboolをOFFに
+            enemyStatusModel.IsHaveMoney = false;
         }
     }
 }

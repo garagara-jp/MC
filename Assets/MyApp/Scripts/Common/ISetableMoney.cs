@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IHaveMoney
+public interface ISetableMoney
 {
     void SetMoneyValue(float moneyValue);
 }

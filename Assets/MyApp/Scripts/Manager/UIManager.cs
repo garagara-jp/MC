@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     PlayerStatusModel playerStatusModel;
+    DealerStatusModel dealerStatusModel;
     TimeManager timeManager;
 
     [SerializeField]
     GameObject player;
+    [SerializeField]
+    GameObject dealer;
 
     [SerializeField]
     Text playerGoldValue;
@@ -18,10 +21,13 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if(player == null)
+        if (player == null)
             player = GameObject.FindWithTag("Player");
+        if (dealer == null)
+            dealer = GameObject.FindWithTag("Dealer");
 
         playerStatusModel = player.GetComponent<PlayerStatusModel>();
+        dealerStatusModel = dealer.GetComponent<DealerStatusModel>();
         timeManager = GetComponent<TimeManager>();
     }
 
@@ -29,5 +35,10 @@ public class UIManager : MonoBehaviour
     {
         playerGoldValue.text = "￥" + playerStatusModel.PlayerMoney.ToString();
         limitTImeValue.text = Mathf.CeilToInt(timeManager.RemainingTIme).ToString();
+
+        if (dealerStatusModel.isShowWindow)
+        {
+
+        }
     }
 }

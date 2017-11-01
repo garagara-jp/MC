@@ -8,6 +8,7 @@ public class DealerStatusModel : MonoBehaviour
     private float dealerMoney = 0;
 
     public float DealerMoney { get; set; }
+    public bool isShowWindow { get; set; }
 
     private void Start()
     {
@@ -18,5 +19,6 @@ public class DealerStatusModel : MonoBehaviour
     public void DealerStatusInitialization()
     {
         DealerMoney = dealerMoney;
+        isShowWindow = false;
     }
 }

@@ -20,7 +20,6 @@ public class EnemyDeathManager : MonoBehaviour
         if (enemyStatusModel.IsDead && !enemyStatusModel.IsHaveMoney)
         {
             Destroy(gameObject);
-            Debug.Log("死にました");
         }
     }
 }

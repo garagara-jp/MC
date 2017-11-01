@@ -11,13 +11,15 @@ public class MoneyEmitter : MonoBehaviour
     EnemyStatusModel enemyStatusModel;
 
     [SerializeField]
-    GameObject moneyPrefab;
+    private GameObject moneyPrefab;
+    private bool moneyIsEmitted;
 
     private void Start()
     {
         enemyStatusModel = GetComponent<EnemyStatusModel>();
         if (moneyPrefab == null)
             moneyPrefab = GameObject.FindWithTag("Money");
+        moneyIsEmitted = false;
     }
 
     private void Update()
@@ -32,9 +34,13 @@ public class MoneyEmitter : MonoBehaviour
             // moneyを生成
             GameObject money = Instantiate(moneyPrefab, transform.position, transform.rotation);
 
-            // moneyのstatusを設定
-            var moneyModel = money.GetComponent<MoneyStatusModel>();
-            moneyModel.MoneyValue = enemyStatusModel.EnemyMoney;
+            // moneyのvalueを設定
+            var haveMoney = money.GetComponent<IHaveMoney>();
+            if (haveMoney != null)
+            {
+                var moneyValue = enemyStatusModel.EnemyMoney;
+                haveMoney.SetMoneyValue(moneyValue);
+            }
 
             // ランダムな方向に射出
             var targetVec = new Vector2((Random.Range(-1, 1) >= 0) ? 1 : -1, Random.Range(-1, 5));

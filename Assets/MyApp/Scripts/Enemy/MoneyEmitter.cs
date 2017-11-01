@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Enemyをアタッチ
@@ -12,40 +13,60 @@ public class MoneyEmitter : MonoBehaviour
 
     [SerializeField]
     private GameObject moneyPrefab;
+    private SpriteRenderer moneySpriteRenderer;
+    private Rigidbody2D moneyRb2D;
     private bool moneyIsEmitted;
 
     private void Start()
     {
         enemyStatusModel = GetComponent<EnemyStatusModel>();
+
         if (moneyPrefab == null)
             moneyPrefab = GameObject.FindWithTag("Money");
+        if (moneyPrefab != null)
+        {
+            moneySpriteRenderer = moneyPrefab.GetComponent<SpriteRenderer>();
+            moneySpriteRenderer.enabled = false;
+            moneyRb2D = moneyPrefab.GetComponent<Rigidbody2D>();
+            moneyRb2D.simulated = false;
+            Debug.Log(moneyRb2D.simulated);
+        }
+
+
         moneyIsEmitted = false;
     }
 
     private void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
-        if (enemyStatusModel.IsDead)
+        if (enemyStatusModel.IsDead && !moneyIsEmitted)
         {
-            // moneyを生成
-            GameObject money = Instantiate(moneyPrefab, transform.position, transform.rotation);
-
-            // moneyのvalueを設定
-            var haveMoney = money.GetComponent<IHaveMoney>();
+            var haveMoney = moneyPrefab.GetComponent<IHaveMoney>();
             if (haveMoney != null)
             {
                 var moneyValue = enemyStatusModel.EnemyMoney;
                 haveMoney.SetMoneyValue(moneyValue);
             }
+            moneySpriteRenderer.enabled = true;
+
+            // Moneyの子オブジェクトを解除
+            transform.DetachChildren();
+
+            moneyIsEmitted = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (moneyPrefab != null && moneyIsEmitted)
+        {
+            moneyRb2D.simulated = true;
 
             // ランダムな方向に射出
-            var targetVec = new Vector2((Random.Range(-1, 1) >= 0) ? 1 : -1, Random.Range(-1, 5));
-            Rigidbody2D moneyRb = money.GetComponent<Rigidbody2D>();
-            moneyRb.velocity += targetVec;
+            var targetVec = new Vector2((UnityEngine.Random.Range(-1, 1) >= 0) ? 1 : -1, UnityEngine.Random.Range(-1, 5));
+            moneyRb2D.velocity = targetVec;
+
+            // Cloneオブジェクトをnull値に
+            moneyPrefab = null;
         }
     }
 }

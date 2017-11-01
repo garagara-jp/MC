@@ -6,4 +6,15 @@ public class BulletStatusModel : MonoBehaviour
 {
     public float BulletPower { get; set; }
     public string ShootOwnerTagName { get; set; }
+    public bool IsDestroyed { get; set; }
+
+    private void Start()
+    {
+        ModelInitialization();
+    }
+
+    public void ModelInitialization()
+    {
+        IsDestroyed = false;
+    }
 }

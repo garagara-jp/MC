@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+/// <summary>
+/// Moneyにアタッチ
+/// </summary>
 public class MoneyValueSetter : MonoBehaviour, IHaveMoney
 {
     MoneyStatusModel moneyStatusModel;

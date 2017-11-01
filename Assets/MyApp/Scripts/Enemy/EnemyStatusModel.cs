@@ -14,6 +14,8 @@ public class EnemyStatusModel : MonoBehaviour
     private float jumpPower = 400f;
     [SerializeField]
     private float enemyMoney = 100;
+    [SerializeField]
+    private bool isDead = false;
 
     public float HitPoint { get; set; }
     public float MoveSpeed { get; set; }
@@ -32,6 +34,8 @@ public class EnemyStatusModel : MonoBehaviour
     {
         if (HitPoint <= 0)
             IsDead = true;
+        else
+            IsDead = isDead;
     }
 
     public void ModelInitialization()

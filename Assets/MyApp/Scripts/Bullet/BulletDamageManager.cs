@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Bulletにアタッチ
+/// </summary>
 public class BulletDamageManager : MonoBehaviour
 {
     BulletStatusModel model;

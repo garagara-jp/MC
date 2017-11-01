@@ -7,27 +7,31 @@ using UnityEngine;
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
+    GameStatusModel gameStatusModel;
+
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
     private Transform spawnPlace;
-    [SerializeField]
-    private bool doSpawn = true;
-    [SerializeField]
-    private float spawnInterval = 1f;   //秒
 
     private void Start()
     {
+        gameStatusModel = GetComponent<GameStatusModel>();
+
         // コルーチンを設定
-        StartCoroutine(SpawnEnemy(spawnInterval));
+        StartCoroutine(SpawnEnemy(gameStatusModel.EnemySpawnInterval));
     }
 
     private IEnumerator SpawnEnemy(float second)
     {
-        // ループ
-        while (doSpawn)
+        while (true)
         {
-            var enemy = Instantiate(enemyPrefab, spawnPlace.position, spawnPlace.rotation);
+            while (gameStatusModel.DoSpawn)
+            {
+                var enemy = Instantiate(enemyPrefab, spawnPlace.position, spawnPlace.rotation);
+                yield return new WaitForSeconds(second);
+            }
+
             yield return new WaitForSeconds(second);
         }
     }

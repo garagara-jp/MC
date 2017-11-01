@@ -4,35 +4,41 @@ using UnityEngine;
 
 public class ButtleManager : MonoBehaviour
 {
+    GameStatusModel gameStatusModel;
     TimeManager timeManager;
-
-    [SerializeField]
-    private bool gameStart = false;
-    [SerializeField]
-    private float limitTime = 180;
-    [SerializeField]
-    private bool pause;
 
     private void Start()
     {
+        gameStatusModel = GetComponent<GameStatusModel>();
         timeManager = GetComponent<TimeManager>();
     }
 
     private void Update()
     {
-        if (gameStart)
+        if (gameStatusModel.IsGameStarted)
         {
-            timeManager.StartGame(limitTime);
-            gameStart = false;
+            timeManager.StartGame(gameStatusModel.LimitTime);
+            gameStatusModel.DoSpawn = true;
+            gameStatusModel.IsGameStarted = false;
         }
 
-        if (pause)
+        if (gameStatusModel.IsPause)
         {
             Time.timeScale = 0;
         }
         else
         {
             Time.timeScale = 1;
+        }
+    }
+
+    private void OnGUI()
+    {
+        var button = GUI.Button(new Rect(20, 20, 100, 40), "Start");
+
+        if (button)
+        {
+            gameStatusModel.IsGameStarted = true;
         }
     }
 }

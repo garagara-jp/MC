@@ -6,7 +6,7 @@ using System;
 /// <summary>
 /// Moneyにアタッチ
 /// </summary>
-public class MoneyValueSetter : MonoBehaviour, IHaveMoney
+public class MoneyValueSetter : MonoBehaviour, ISetableMoney
 {
     MoneyStatusModel moneyStatusModel;
 

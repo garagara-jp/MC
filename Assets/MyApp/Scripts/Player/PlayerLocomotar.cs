@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLocomotar : MonoBehaviour
+public class PlayerLocomotor : MonoBehaviour
 {
     Rigidbody2D rb2d;
     private Dictionary<string, int> moveDirection = new Dictionary<string, int>();

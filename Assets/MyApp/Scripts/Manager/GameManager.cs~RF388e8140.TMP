@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum GameState
 {
-    Title,
+    Start,
     Prepare,
-    Battle,
+    Playing,
     End
 }
 
@@ -16,11 +16,8 @@ public enum GameState
 /// </summary>
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    private GameState currentGameState;
-
     private void Awake()
     {
-        // シングルトンを確立
         if (this != Instance)
         {
             Destroy(this);
@@ -30,9 +27,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         DontDestroyOnLoad(gameObject);
     }
 
+    //指定したBGMを再生する
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
-
 }

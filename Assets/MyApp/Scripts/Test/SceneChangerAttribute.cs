@@ -1,6 +1,4 @@
-﻿// 参照: https://qiita.com/keel/items/11ec62aff184a3a2cccc
-
-using UnityEngine;
+﻿using UnityEngine;
 #if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +6,7 @@ using System.Linq;
 using UnityEditor;
 #endif
 
-public class SceneChangerAttribute : PropertyAttribute { }
+class SceneChangerAttribute : PropertyAttribute { }
 [CustomPropertyDrawer(typeof(SceneChangerAttribute))]
 public class SceneChangerEditor : PropertyDrawer
 {

@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 22261187}
   - component: {fileID: 22261186}
   - component: {fileID: 22261185}
+  - component: {fileID: 22261188}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -223,6 +224,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22261183}
+--- !u!114 &22261188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22261183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a89c697378d6641b618bcbdd81b7f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: test
 --- !u!1 &81658885
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +261,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 81658885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -466, y: -236.99995, z: 0}
+  m_LocalPosition: {x: 498, y: -236.99995, z: 0}
   m_LocalScale: {x: 0.9999975, y: 0.9999975, z: 0.9999975}
   m_Children:
   - {fileID: 1269905613}
@@ -257,7 +270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -465.99997, y: -236.99997}
+  m_AnchoredPosition: {x: 498, y: -236.99997}
   m_SizeDelta: {x: 503, y: 192.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81658887
@@ -811,7 +824,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30BF\u30FC\u30C8"
+  m_Text: "\u7D42\u4E86"
 --- !u!222 &1269905615
 CanvasRenderer:
   m_ObjectHideFlags: 0

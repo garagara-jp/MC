@@ -4,14 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger4Button : MonoBehaviour
+public class TestSceneChangeController : MonoBehaviour
 {
+    Button btn;
+
     //どんな名前でもいいのでstring型のフィールドに付ける
     [SerializeField, SceneChangerAttribute]
-    string _NextScene;
+    string nextScene;
 
-    void OnClick()
+    private void Start()
     {
-        SceneManager.LoadScene(_NextScene);
+        btn = GetComponent<Button>();
+        btn.onClick.AddListener(OnClickFunction);
+    }
+
+    void OnClickFunction()
+    {
+        SceneManager.LoadScene(nextScene);
     }
 }

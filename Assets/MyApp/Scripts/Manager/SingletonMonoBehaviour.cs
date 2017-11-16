@@ -23,5 +23,4 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
             return instance;
         }
     }
-
 }

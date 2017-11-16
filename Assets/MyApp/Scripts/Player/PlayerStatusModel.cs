@@ -16,6 +16,7 @@ public class PlayerStatusModel : MonoBehaviour
     [SerializeField]
     private float playerMoney = 0;
 
+    public int PlayerNumber { get; set; }
     public float HitPoint { get; set; }
     public float MoveSpeed { get; set; }
     public float RotationSpeed { get; set; }

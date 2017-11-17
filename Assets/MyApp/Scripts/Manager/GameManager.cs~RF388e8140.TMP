@@ -1,0 +1,37 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum GameState
+{
+    Start,
+    Prepare,
+    Playing,
+    End
+}
+
+/// <summary>
+/// ゲーム全体の進行を管理するGameManager
+/// シングルトンパターンで作成
+/// </summary>
+public class GameManager : SingletonMonoBehaviour<GameManager>
+{
+    private void Awake()
+    {
+        if (this != Instance)
+        {
+            Destroy(this);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    //指定したBGMを再生する
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
+}

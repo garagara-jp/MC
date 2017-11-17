@@ -8,11 +8,11 @@ public class PlayerManager
     // このクラスは GameManager クラスと一緒に使い、タンクの挙動と、プレイヤーがゲームのさまざまな段階で
     // タンクを制御するかを支配します。
 
-    public Transform SpawnPoint;                          // タンクが生成されたときのタンクの場所と向き
+    public Transform SpawnPoint;        // Playerが生成されたときの場所と向き
     [HideInInspector]
-    public int PlayerNumber;            // この番号によってどのプレイヤーのマネージャーかを認識します。
+    public int PlayerNumber;            // Playerの識別番号
     [HideInInspector]
-    public GameObject PlayerInstance;
+    public GameObject PlayerInstance;   // 管理するPlayerのプレハブ
 
     private PlayerStatusModel playerStatusModel;
     private PlayerLocomotor playerLocomotor;
@@ -26,13 +26,13 @@ public class PlayerManager
 
         playerStatusModel.PlayerNumber = PlayerNumber;
 
-        // スクリプトをまたいで、プレイヤー番号が一定であるように設定します。
+        // スクリプトをまたいで、プレイヤー番号が一定であるように設定
         //playerLocomotor.m_PlayerNumber = m_PlayerNumber;
         //playerAttackManager.m_PlayerNumber = m_PlayerNumber;
     }
 
 
-    // プレイヤーが制御できないゲーム状態に使用。
+    // プレイヤーが制御できないゲーム状態に使用
     public void DisableControl()
     {
         playerLocomotor.enabled = false;
@@ -40,15 +40,14 @@ public class PlayerManager
     }
 
 
-    // プレイヤーが制御可能なゲーム状態に使用。
+    // プレイヤーが制御可能なゲーム状態に使用
     public void EnableControl()
     {
         playerLocomotor.enabled = true;
         playerAttackManager.enabled = true;
     }
 
-
-    // 各ラウンド開始時に使い、タンクをデフォルト状態にします。
+    // 各ゲーム開始時にPlayerをリセット
     public void Reset()
     {
         PlayerInstance.transform.position = SpawnPoint.position;

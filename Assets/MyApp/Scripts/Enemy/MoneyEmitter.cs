@@ -11,24 +11,23 @@ public class MoneyEmitter : MonoBehaviour
 {
     EnemyStatusModel enemyStatusModel;
 
-    [SerializeField]
-    private GameObject moneyPrefab;
-    private SpriteRenderer moneySpriteRenderer;
-    private Rigidbody2D moneyRb2D;
+    private List<GameObject> moneyPrefabs;
+    private List<SpriteRenderer> moneySpriteRenderers;
+    private List<Rigidbody2D> moneyRb2Ds;
     private bool moneyIsEmitted;
 
     private void Start()
     {
         enemyStatusModel = GetComponent<EnemyStatusModel>();
+        moneyPrefabs = enemyStatusModel.MoneyPrefabs;
 
-        if (moneyPrefab == null)
-            moneyPrefab = GameObject.FindWithTag("Money");
-        if (moneyPrefab != null)
+
+        for (int i = 0; i < moneyPrefabs.Count; i++)
         {
-            moneySpriteRenderer = moneyPrefab.GetComponent<SpriteRenderer>();
-            moneySpriteRenderer.enabled = false;
-            moneyRb2D = moneyPrefab.GetComponent<Rigidbody2D>();
-            moneyRb2D.simulated = false;
+            moneySpriteRenderers[i] = moneyPrefabs[i].GetComponent<SpriteRenderer>();
+            moneySpriteRenderers[i].enabled = false;
+            moneyRb2Ds[i] = moneyPrefabs[i].GetComponent<Rigidbody2D>();
+            moneyRb2Ds[i].simulated = false;
         }
 
         moneyIsEmitted = false;
@@ -38,33 +37,39 @@ public class MoneyEmitter : MonoBehaviour
     {
         if (enemyStatusModel.IsDead && !moneyIsEmitted)
         {
-            // インターフェースからMoneyのValueをセット
-            var setableMoney = moneyPrefab.GetComponent<ISetableMoney>();
-            if (setableMoney != null)
+            for (int i = 0; i < moneyPrefabs.Count; i++)
             {
-                var moneyValue = enemyStatusModel.EnemyMoney;
-                setableMoney.SetMoneyValue(moneyValue);
+                // インターフェースからMoneyのValueをセット
+                var setableMoney = moneyPrefabs[i].GetComponent<ISetableMoney>();
+                if (setableMoney != null)
+                {
+                    var moneyValue = enemyStatusModel.EnemyMoney;
+                    setableMoney.SetMoneyValue(moneyValue);
+                }
+
+                // MoneyのRendererをONに
+                moneySpriteRenderers[i].enabled = true;
             }
 
-            // MoneyのRendererをONに
-            moneySpriteRenderer.enabled = true;
-            
             moneyIsEmitted = true;
         }
     }
 
     private void FixedUpdate()
     {
-        if (moneyPrefab != null && moneyIsEmitted)
+        if (moneyPrefabs != null && moneyIsEmitted)
         {
-            moneyRb2D.simulated = true;
+            for (int i = 0; i < moneyPrefabs.Count; i++)
+            {
+                moneyRb2Ds[i].simulated = true;
 
-            // ランダムな方向に射出
-            var targetVec = new Vector2((UnityEngine.Random.Range(-1, 1) >= 0) ? 1 : -1, UnityEngine.Random.Range(1, 3));
-            moneyRb2D.velocity = targetVec;
+                // ランダムな方向に射出
+                var targetVec = new Vector2((UnityEngine.Random.Range(-1, 1) >= 0) ? 1 : -1, UnityEngine.Random.Range(1, 3));
+                moneyRb2Ds[i].velocity = targetVec;
 
-            // Cloneオブジェクトをnull値に
-            moneyPrefab = null;
+                // Cloneオブジェクトをnull値に
+                moneyPrefabs[i] = null;
+            }
 
             // ModelのboolをOFFに
             enemyStatusModel.IsHaveMoney = false;

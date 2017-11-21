@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Getされる側に実装
 /// </summary>
-public interface IGetableMoney
+public interface IGetUIValue<T>
 {
-    float GetMoneyValue();
+    T GetUIValue();
 }

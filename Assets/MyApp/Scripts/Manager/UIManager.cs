@@ -8,60 +8,48 @@ using UnityEngine.UI;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    GameStatusModel gameStatusModel;
-    PlayerStatusModel playerStatusModel;
+    private List<PlayerStatusModel> playerStatusModels = new List<PlayerStatusModel>();
     DealerStatusModel dealerStatusModel;
-    TimeManager timeManager;
-
-    [SerializeField]
-    private GameObject player;
-    [SerializeField]
-    private GameObject dealer;
 
     [SerializeField]
     private Text playerGoldValue;
     [SerializeField]
     private Text limitTImeValue;
 
-    [SerializeField]
-    private GameObject tradeWindow;
+    //[SerializeField]
+    //private GameObject tradeWindow;
 
     private void Start()
     {
-        if (player == null)
-            player = GameObject.FindWithTag("Player");
-        if (dealer == null)
-            dealer = GameObject.FindWithTag("Dealer");
+        for (int i = 0; i < GameManager.Instance.playerTotalNumber; i++)
+        {
+            playerStatusModels.Add(GameManager.Instance.PlayerManagerList[i].PlayerInstance.GetComponent<PlayerStatusModel>());
+        }
 
-        playerStatusModel = player.GetComponent<PlayerStatusModel>();
-        dealerStatusModel = dealer.GetComponent<DealerStatusModel>();
-        gameStatusModel = GetComponent<GameStatusModel>();
-        timeManager = GetComponent<TimeManager>();
-
-        tradeWindow.SetActive(false);
+        //tradeWindow.SetActive(false);
     }
 
     private void Update()
     {
         // Playerの所持金と残り時間を表示
-        playerGoldValue.text = "￥" + playerStatusModel.PlayerMoney.ToString();
-        limitTImeValue.text = Mathf.CeilToInt(timeManager.RemainingTIme).ToString();
+        playerGoldValue.text = playerStatusModels[0].PlayerMoney.ToString();
+        limitTImeValue.text = Mathf.CeilToInt(TimeManager.Instance.RemainingTIme).ToString();
 
-        // アイテムトレード画面を表示
-        if (dealerStatusModel.isShowWindow)
-        {
-            tradeWindow.SetActive(true);
-            gameStatusModel.IsPause = true;
-        }
-        else
-        {
-            tradeWindow.SetActive(false);
-            gameStatusModel.IsPause = false;
-        }
+        //// アイテムトレード画面を表示
+        //if (dealerStatusModel.isShowWindow)
+        //{
+        //    tradeWindow.SetActive(true);
+        //    gameStatusModel.IsPause = true;
+        //}
+        //else
+        //{
+        //    tradeWindow.SetActive(false);
+        //    gameStatusModel.IsPause = false;
+        //}
     }
 
-    private void OnGUI()
-    {
-        GUI.Box(new Rect(20, 100, 100, 30), "HP : " + playerStatusModel.HitPoint.ToString());
-    }
+    //private void OnGUI()
+    //{
+    //    GUI.Box(new Rect(20, 100, 100, 30), "HP : " + playerStatusModel.HitPoint.ToString());
+    //}
 }

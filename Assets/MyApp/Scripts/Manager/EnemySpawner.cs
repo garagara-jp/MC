@@ -3,35 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// GameManagerにアタッチ
+/// 各EnemySpawnオブジェクトにアタッチ
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
-    GameStatusModel gameStatusModel;
+    [SerializeField]
+    BattleManager battleManager;
 
     [SerializeField]
-    private GameObject enemyPrefab;
-    [SerializeField]
-    private Transform spawnPlace;
+    private List<GameObject> enemyPrefabs;
 
     private void Start()
     {
-        gameStatusModel = GetComponent<GameStatusModel>();
-
         // コルーチンを設定
-        StartCoroutine(SpawnEnemy(gameStatusModel.EnemySpawnInterval));
+        StartCoroutine(SpawnEnemy(battleManager.EnemySpawnInterval));
     }
 
+    // スポーン処理
     private IEnumerator SpawnEnemy(float second)
     {
         while (true)
         {
-            while (gameStatusModel.DoSpawn)
+            while (battleManager.DoSpawn)
             {
-                var enemy = Instantiate(enemyPrefab, spawnPlace.position, spawnPlace.rotation);
+                // リスト内のプレハブのランダムに返す
+                var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count - 1)], transform.position, transform.rotation);
                 yield return new WaitForSeconds(second);
+                Debug.Log("aaa");
             }
-
             yield return new WaitForSeconds(second);
         }
     }

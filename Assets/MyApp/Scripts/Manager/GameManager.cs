@@ -36,7 +36,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public List<PlayerManager> PlayerManagerList = new List<PlayerManager>();
 
-    private GameState currentGameState;
+    public GameState currentGameState;
 
     private void Awake()
     {
@@ -70,7 +70,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 SpawnAllPlayer();
                 break;
             case GameState.Battle:
-                //PlayingAction();
                 break;
             case GameState.Result:
                 //EndAction();

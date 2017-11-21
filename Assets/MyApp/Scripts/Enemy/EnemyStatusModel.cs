@@ -24,6 +24,7 @@ public class EnemyStatusModel : MonoBehaviour
     public float EnemyMoney { get; set; }
     public bool IsDead { get; set; }
     public bool IsHaveMoney { get; set; }
+    public List<GameObject> MoneyPrefabs { get; set; }
 
     private void Start()
     {

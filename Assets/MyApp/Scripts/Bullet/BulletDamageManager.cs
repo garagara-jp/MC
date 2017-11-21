@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Bulletにアタッチ
+/// 対象に与えるダメージを管理
 /// </summary>
 public class BulletDamageManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class BulletDamageManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        // 弾が射出したGameObjectにダメージ判定を適用しないように判定
+        // 弾を射出したGameObjectにダメージ判定を適用しないように判定
         if (col.gameObject.tag == model.ShootOwnerTagName)
         { 
             return;

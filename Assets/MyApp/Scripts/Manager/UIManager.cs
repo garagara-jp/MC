@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         // Playerの所持金と残り時間を表示
-        playerGoldValue.text = playerStatusModels[0].PlayerMoney.ToString();
+        playerGoldValue.text = GameManager.Instance.PlayerManagerList[0].PlayerInstance.GetComponent<PlayerStatusModel>().PlayerMoney.ToString();
         limitTImeValue.text = Mathf.CeilToInt(TimeManager.Instance.RemainingTIme).ToString();
 
         //// アイテムトレード画面を表示

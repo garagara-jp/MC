@@ -15,7 +15,7 @@ public class BattleManager : MonoBehaviour
 
     public bool DoSpawn { get; set; }
     public bool IsPause { get; set; }
-    public float EnemySpawnInterval { get; set; }
+    public float EnemySpawnInterval { get { return enemySpawnInterval; } }
 
     private void Start()
     {

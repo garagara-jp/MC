@@ -36,6 +36,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public List<PlayerManager> PlayerManagerList = new List<PlayerManager>();
 
+    [HideInInspector]
     public GameState currentGameState;
 
     private void Awake()
@@ -52,7 +53,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     // 外からこのメソッドを利用して状態を変更
     public void SetCurrentState(GameState state)
     {
-        Debug.Log("Called SetCurrentState(" + state + ")");
         currentGameState = state;
         Debug.Log("CurrentState is " + currentGameState);
         OnGameStateChanged(currentGameState);

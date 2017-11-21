@@ -29,7 +29,6 @@ public class EnemySpawner : MonoBehaviour
                 // リスト内のプレハブのランダムに返す
                 var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count - 1)], transform.position, transform.rotation);
                 yield return new WaitForSeconds(second);
-                Debug.Log("aaa");
             }
             yield return new WaitForSeconds(second);
         }

@@ -22,6 +22,7 @@ public class MoneyCollector : MonoBehaviour
         {
             playerStatusModel.PlayerMoney += getableMoney.GetMoneyValue();
             Destroy(col.gameObject);
+            //Debug.Log("Now PlayerMoney is " + playerStatusModel.PlayerMoney);
         }
     }
 }

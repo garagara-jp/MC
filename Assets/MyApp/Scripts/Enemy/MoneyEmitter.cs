@@ -10,68 +10,58 @@ using System;
 public class MoneyEmitter : MonoBehaviour
 {
     EnemyStatusModel enemyStatusModel;
-
-    private List<GameObject> moneyPrefabs;
-    private List<SpriteRenderer> moneySpriteRenderers;
-    private List<Rigidbody2D> moneyRb2Ds;
     private bool moneyIsEmitted;
 
     private void Start()
     {
         enemyStatusModel = GetComponent<EnemyStatusModel>();
-        moneyPrefabs = enemyStatusModel.MoneyPrefabs;
-
-
-        for (int i = 0; i < moneyPrefabs.Count; i++)
-        {
-            moneySpriteRenderers[i] = moneyPrefabs[i].GetComponent<SpriteRenderer>();
-            moneySpriteRenderers[i].enabled = false;
-            moneyRb2Ds[i] = moneyPrefabs[i].GetComponent<Rigidbody2D>();
-            moneyRb2Ds[i].simulated = false;
-        }
-
         moneyIsEmitted = false;
     }
 
     private void Update()
     {
+        // Enemyの死亡とMoneyの所持状況を確認
         if (enemyStatusModel.IsDead && !moneyIsEmitted)
         {
-            for (int i = 0; i < moneyPrefabs.Count; i++)
+            // Moneyの排出処理
+            for (int i = 0; i < enemyStatusModel.MoneyPrefabs.Count; i++)
             {
-                // インターフェースからMoneyのValueをセット
-                var setableMoney = moneyPrefabs[i].GetComponent<ISetableMoney>();
+                // インターフェース越しにMoneyのValueをセット
+                var setableMoney = enemyStatusModel.MoneyPrefabs[i].GetComponent<ISetableMoney>();
                 if (setableMoney != null)
                 {
+                    // Moneyにvalueをセット（このタイミングで親子関係を解除している）
                     var moneyValue = enemyStatusModel.EnemyMoney;
                     setableMoney.SetMoneyValue(moneyValue);
                 }
 
-                // MoneyのRendererをONに
-                moneySpriteRenderers[i].enabled = true;
+                // MoneyのRendererをON
+                enemyStatusModel.MoneyPrefabs[i].GetComponent<SpriteRenderer>().enabled = true;
             }
 
+            // 排出処理の完了を確認--->
             moneyIsEmitted = true;
         }
     }
 
     private void FixedUpdate()
     {
-        if (moneyPrefabs != null && moneyIsEmitted)
+        // --->排出が完了したらプレハブの挙動を設定
+        if (moneyIsEmitted)
         {
-            for (int i = 0; i < moneyPrefabs.Count; i++)
+            for (int i = 0; i < enemyStatusModel.MoneyPrefabs.Count; i++)
             {
-                moneyRb2Ds[i].simulated = true;
+                var moneyRb2D = enemyStatusModel.MoneyPrefabs[i].GetComponent<Rigidbody2D>();
 
-                // ランダムな方向に射出
+                // MoneyのRigidbody2DをON
+                moneyRb2D.simulated = true;
+
+                // Moneyをランダムな方向に射出
                 var targetVec = new Vector2((UnityEngine.Random.Range(-1, 1) >= 0) ? 1 : -1, UnityEngine.Random.Range(1, 3));
-                moneyRb2Ds[i].velocity = targetVec;
-
-                // Cloneオブジェクトをnull値に
-                moneyPrefabs[i] = null;
+                moneyRb2D.velocity = targetVec;
             }
 
-            // ModelのboolをOFFに
+            // 挙動設定の完了を確認
             enemyStatusModel.IsHaveMoney = false;
         }
     }

@@ -20,11 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4603067830421148}
   - component: {fileID: 114853798005340922}
-  - component: {fileID: 114383501022111880}
   - component: {fileID: 114014313047350190}
   - component: {fileID: 114821315880193842}
   - component: {fileID: 114695831638533568}
-  - component: {fileID: 114313107680894462}
   - component: {fileID: 114982178515900460}
   m_Layer: 0
   m_Name: SceneManager101
@@ -57,35 +55,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecdb3ea1b6858d4fb3a10482eb6ba00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  dealer: {fileID: 0}
   playerGoldValue: {fileID: 0}
   limitTImeValue: {fileID: 0}
-  tradeWindow: {fileID: 0}
---- !u!114 &114313107680894462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709363305954666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ab2732cc714014ab620044d0aeaf6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limitTime: 180
-  enemySpawnInterval: 1
---- !u!114 &114383501022111880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709363305954666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdb8c485936c2e469b920cd4eb3b248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114695831638533568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4456575a9355444a743d520cdf6250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limitTime: 180
+  enemySpawnInterval: 1
 --- !u!114 &114853798005340922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,4 +108,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTotalNumber: 1
   playerSpawnPoint: {fileID: 0}
-  player: {fileID: 1806172713870434, guid: a585a59394b1fc148a38c30277bf7ab3, type: 2}
+  player: {fileID: 1585519674466788, guid: b97645014b8e27945b4a6e7e74fee6ed, type: 2}

@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac911cb65b49894889d4e0afbceca79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyObj: []
+  moneyPrefabs: []
 --- !u!114 &114044424340852482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9a3675fcd63a64d8af550e753e330c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyPrefab: {fileID: 0}
 --- !u!114 &114046882031450406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 1
-  bulletPrafab: {fileID: 0}
+  bulletPrafab: {fileID: 1311320939582768, guid: f29f8a3cc36203a4f942a2158595101a,
+    type: 2}
   bulletPower: 10
   bulletSpeed: 3
   attackInterval: 1

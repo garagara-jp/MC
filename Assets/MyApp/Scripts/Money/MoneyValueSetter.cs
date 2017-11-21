@@ -17,6 +17,8 @@ public class MoneyValueSetter : MonoBehaviour, ISetableMoney
 
     public void SetMoneyValue(float moneyValue)
     {
+        Debug.Log(moneyStatusModel.MoneyValue);
+        Debug.Log(moneyValue);
         moneyStatusModel.MoneyValue = moneyValue;
         transform.parent = null;
     }

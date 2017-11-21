@@ -19,10 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4603067830421148}
-  - component: {fileID: 114853798005340922}
   - component: {fileID: 114014313047350190}
   - component: {fileID: 114821315880193842}
-  - component: {fileID: 114695831638533568}
   - component: {fileID: 114982178515900460}
   m_Layer: 0
   m_Name: SceneManager101
@@ -57,20 +55,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGoldValue: {fileID: 0}
   limitTImeValue: {fileID: 0}
---- !u!114 &114695831638533568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709363305954666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f8c993bad16a448815d570d82bd7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1796701664385754, guid: 6a2278da9cdde2c4b83f9cf05c78b1ee,
-    type: 2}
-  spawnPlace: {fileID: 0}
 --- !u!114 &114821315880193842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,18 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limitTime: 180
-  enemySpawnInterval: 1
---- !u!114 &114853798005340922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709363305954666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c3996d786be6504ea0c511f612b8a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  enemySpawnInterval: 10
 --- !u!114 &114982178515900460
 MonoBehaviour:
   m_ObjectHideFlags: 1

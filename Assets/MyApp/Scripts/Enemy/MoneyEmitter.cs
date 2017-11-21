@@ -11,22 +11,23 @@ public class MoneyEmitter : MonoBehaviour
 {
     EnemyStatusModel enemyStatusModel;
 
-    private List<GameObject> moneyPrefabs;
-    private List<SpriteRenderer> moneySpriteRenderers;
-    private List<Rigidbody2D> moneyRb2Ds;
+    private List<GameObject> moneyPrefabs = new List<GameObject>();
+    private List<SpriteRenderer> moneySpriteRenderers = new List<SpriteRenderer>();
+    private List<Rigidbody2D> moneyRb2Ds = new List<Rigidbody2D>();
     private bool moneyIsEmitted;
 
     private void Start()
     {
         enemyStatusModel = GetComponent<EnemyStatusModel>();
-        moneyPrefabs = enemyStatusModel.MoneyPrefabs;
 
+        foreach (var i in enemyStatusModel.MoneyPrefabs)
+            moneyPrefabs.Add(i);
 
         for (int i = 0; i < moneyPrefabs.Count; i++)
         {
-            moneySpriteRenderers[i] = moneyPrefabs[i].GetComponent<SpriteRenderer>();
+            moneySpriteRenderers.Add(moneyPrefabs[i].GetComponent<SpriteRenderer>());
             moneySpriteRenderers[i].enabled = false;
-            moneyRb2Ds[i] = moneyPrefabs[i].GetComponent<Rigidbody2D>();
+            moneyRb2Ds.Add(moneyPrefabs[i].GetComponent<Rigidbody2D>());
             moneyRb2Ds[i].simulated = false;
         }
 

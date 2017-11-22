@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class TimeManager : SingletonMonoBehaviour<TimeManager>
 {
-    private float gameStartTime;
+    private bool isCounting = false;
+    private float startTime;
     private float elapsedTime;
     private float remainingTime;
     private float limitTime;
 
-    public float GameStartTime { get { return gameStartTime; } }
     public float ElapsedTime { get { return elapsedTime; } }
     public float RemainingTIme { get { return remainingTime; } }
 
@@ -28,16 +28,33 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
 
     private void Update()
     {
-        if (gameStartTime != 0)
+        if (isCounting)
         {
-            elapsedTime = Time.time - gameStartTime;
+            elapsedTime = Time.time - startTime;
         }
         remainingTime = limitTime - elapsedTime;
+
+        if (remainingTime <= 0f)
+        {
+            FinishCount();
+        }
     }
 
-    public void StartBattle(float limitTime)
+    // カウント開始(外部起動)
+    public void StartCount(float limitTime)
     {
-        gameStartTime = Time.time;
+        startTime = Time.time;
         this.limitTime = limitTime;
+        isCounting = true;
+    }
+
+    // カウント終了
+    public void FinishCount()
+    {
+        startTime = 0;
+        elapsedTime = 0;
+        remainingTime = 0;
+        limitTime = 0;
+        isCounting = false;
     }
 }

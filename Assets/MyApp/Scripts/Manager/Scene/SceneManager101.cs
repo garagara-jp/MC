@@ -27,4 +27,9 @@ public class SceneManager101 : MonoBehaviour
         GameManager.Instance.playerSpawnPoint = playerSpawnPoint;
         GameManager.Instance.SetCurrentState(GameState.Prepare);
     }
+
+    private void Start()
+    {
+        
+    }
 }

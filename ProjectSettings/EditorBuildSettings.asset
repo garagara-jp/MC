@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/MyApp/Scenes/001.Title.unity
     guid: 9679a073085ae5046b679ecf5e09e1de
   - enabled: 1
-    path: Assets/MyApp/Scenes/101.Buttle.unity
+    path: Assets/MyApp/Scenes/101.Battle.unity
     guid: 574f1fb3b5f377249a766709bb867956
   - enabled: 1
     path: Assets/Test/Scenes/TestTitle.unity

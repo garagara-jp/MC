@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4143131521322024}
   - component: {fileID: 212375056824823352}
-  - component: {fileID: 58932387459799634}
   - component: {fileID: 50417346012050492}
+  - component: {fileID: 70393629387132110}
   - component: {fileID: 114160607516317458}
   - component: {fileID: 114342268399201898}
   - component: {fileID: 114870230928600536}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1034553977091438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49874482, y: 0.43624854, z: 0}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 1}
+  m_LocalPosition: {x: 3.8051097, y: -2.7558837, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,21 +65,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58932387459799634
-CircleCollider2D:
+--- !u!70 &70393629387132110
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1034553977091438}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3, y: -0.32}
-  serializedVersion: 2
-  m_Radius: 5.3999996
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.96, y: 1.66}
+  m_Direction: 1
 --- !u!114 &114160607516317458
 MonoBehaviour:
   m_ObjectHideFlags: 1

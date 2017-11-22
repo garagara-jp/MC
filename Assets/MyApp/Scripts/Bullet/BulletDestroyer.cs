@@ -25,7 +25,7 @@ public class BulletDestroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Stage")
+        if (col.gameObject.tag == "Stage" || col.gameObject.tag == "Enemy")
         {
             bulletStatusModel.IsDestroyed = true;
         }

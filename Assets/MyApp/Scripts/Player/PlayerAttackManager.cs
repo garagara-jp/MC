@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    PlayerWeaponModel playerWeaponModel;
+    PlayerWeaponModel model;
     private float elapsedTime;
+    private Vector2 bulletPos;
+    private Vector2 bulletShootVec;
 
     private void Start()
     {
-        playerWeaponModel = GetComponent<PlayerWeaponModel>();
+        model = GetComponent<PlayerWeaponModel>();
         elapsedTime = 0f;
+        bulletShootVec = Vector2.up;
+    }
+
+    private void Update()
+    {
+        // bulletの射出位置を指定
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            bulletPos = transform.position + Vector3.left * transform.localScale.x * 3f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            bulletPos = transform.position + Vector3.right * transform.localScale.x * 3f;
+        }
+        else bulletPos = transform.position + Vector3.up * transform.localScale.y * 2.5f;
     }
 
     private void FixedUpdate()
@@ -18,11 +35,11 @@ public class PlayerAttackManager : MonoBehaviour
         // 攻撃処理
         if (Input.GetKey(KeyCode.Z))
         {
-            ShotBullet(playerWeaponModel.AttackInterval,
-                playerWeaponModel.BulletPrefab,
-                playerWeaponModel.BulletPower,
+            ShotBullet(model.AttackInterval,
+                model.BulletPrefab,
+                model.BulletPower,
                 gameObject.tag,
-                playerWeaponModel.BulletSpeed);
+                model.BulletSpeed);
         }
         else
         {
@@ -38,18 +55,36 @@ public class PlayerAttackManager : MonoBehaviour
             elapsedTime = attackInterval;
 
             // bulletを生成
-            var bulletPos = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
             var bulletRota = bulletPrefab.transform.rotation;
             GameObject bullet = Instantiate(bulletPrefab, bulletPos, bulletRota);
+            bullet.transform.eulerAngles = new Vector3(0, 0, 90);
 
             // bulletのstatusを設定
             var model = bullet.GetComponent<BulletStatusModel>();
             model.BulletPower = bulletPower;
-            model.ShootOwnerTagName = myTagName;
 
             // 射出
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletRb.velocity += Vector2.up * bulletSpeed;
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                bulletShootVec = Vector2.left;
+                bullet.transform.eulerAngles = new Vector3(0, 0, 180);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                bulletShootVec = Vector2.right;
+                bullet.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else bulletShootVec = Vector2.up;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                bulletShootVec = Vector2.up;
+                bullet.transform.eulerAngles = new Vector3(0, 0, 90);
+            }
+
+            bulletRb.velocity += bulletShootVec * bulletSpeed;
         }
     }
 }

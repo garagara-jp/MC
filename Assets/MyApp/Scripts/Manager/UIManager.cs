@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     private Text playerGoldValue;
     [SerializeField]
     private Text limitTImeValue;
+    [SerializeField]
+    private Text playerLifeValue;
 
     //[SerializeField]
     //private GameObject tradeWindow;
@@ -33,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         // Playerの所持金と残り時間を表示
         playerGoldValue.text = GameManager.Instance.PlayerManagerList[0].PlayerInstance.GetComponent<PlayerStatusModel>().PlayerMoney.ToString();
+        playerLifeValue.text = GameManager.Instance.PlayerManagerList[0].PlayerInstance.GetComponent<PlayerStatusModel>().HitPoint.ToString();
         limitTImeValue.text = Mathf.CeilToInt(TimeManager.Instance.RemainingTIme).ToString();
 
         //// アイテムトレード画面を表示

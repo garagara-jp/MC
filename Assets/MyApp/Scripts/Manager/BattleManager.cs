@@ -10,12 +10,9 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField]
     private float limitTime = 180;
-    [SerializeField]
-    private float enemySpawnInterval = 1;
 
     public bool DoSpawn { get; set; }
     public bool IsPause { get; set; }
-    public float EnemySpawnInterval { get { return enemySpawnInterval; } }
 
     private void Start()
     {

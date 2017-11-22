@@ -23,8 +23,8 @@ TagManager:
   - EnemyLayer
   - MoneyLayer
   - WallLayer
-  - 
-  - 
+  - PlayerAttackLayer
+  - EnemyAttackLayer
   - 
   - 
   - 

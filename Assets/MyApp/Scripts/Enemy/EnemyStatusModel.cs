@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyType { Flow, Ground }
+public enum IsClown { Clown, Normal }
 public enum EnemySize { S, L }
+public enum MoneyType { Lcoin, Scoin, Jewel }
 
 public class EnemyStatusModel : MonoBehaviour
 {
     [SerializeField]
     private EnemyType enemyType;
+    [SerializeField]
+    private IsClown isClown;
     [SerializeField]
     private EnemySize enemySize;
     [SerializeField]
@@ -27,7 +31,9 @@ public class EnemyStatusModel : MonoBehaviour
     private bool isDead = false;
 
     public EnemyType EnemyType { get { return enemyType; } }
+    public IsClown IsClown { get { return isClown; } }
     public EnemySize EnemySize { get { return enemySize; } }
+    public int[] EnemyAttributeList { get; set; }
     public float HitPoint { get; set; }
     public float EnemyPower { get; set; }
     public float MoveSpeed { get; set; }
@@ -37,10 +43,6 @@ public class EnemyStatusModel : MonoBehaviour
     public bool IsDead { get; set; }
     public bool IsHaveMoney { get; set; }
     public List<GameObject> MoneyPrefabs { get; set; }  // Enemyの所持するMoneyプレハブ
-
-    public int LcoinNum { get; set; }
-    public int ScoinNum { get; set; }
-    public int JewelNum { get; set; }
 
     private void Start()
     {

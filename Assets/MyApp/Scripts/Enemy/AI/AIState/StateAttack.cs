@@ -47,7 +47,6 @@ public class StateAttack : StateBase
             // bulletのstatusを設定
             var bulletModel = bullet.GetComponent<BulletStatusModel>();
             bulletModel.BulletPower = attackModel.BulletPower;
-            bulletModel.ShootOwnerTagName = myTagName;
 
             // プレイヤーに向けて射出
             var targetVec = Vector3.Normalize(player.transform.position - transform.position) * bulletSpeed;

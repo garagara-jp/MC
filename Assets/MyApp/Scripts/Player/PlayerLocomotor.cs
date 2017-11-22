@@ -17,6 +17,8 @@ public class PlayerLocomotor : MonoBehaviour
     private float rotationSpeed = 3f;
     private bool rotationTrigger = false;
     private int rotationDir;
+    [SerializeField]
+    LayerMask mask;
 
     void Start()
     {
@@ -75,7 +77,13 @@ public class PlayerLocomotor : MonoBehaviour
 
     private void JumpMove()
     {
-        rb2d.AddForce(Vector2.up * jumpPower);
+        // Rayで設置判定を取得
+        float rayDis = 3.5f;
+        if (Physics2D.Raycast(transform.position, -Vector3.up, transform.localScale.y * rayDis, mask))
+        {
+            rb2d.AddForce(Vector2.up * jumpPower);
+        }
+        //Debug.DrawRay(transform.position, -Vector3.up * transform.localScale.y * rayDis, Color.red, 2, false);
     }
 
     private void RotateAroundUpAxis(int dir)

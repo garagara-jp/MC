@@ -8,18 +8,24 @@ using UnityEngine;
 /// </summary>
 public class MoneyStocker : MonoBehaviour
 {
-    EnemyStatusModel enemyStatusModel;
-
+    EnemyStatusModel model;
     [SerializeField]
-    private List<GameObject> moneyPrefabs;  // cloneするMoneyプレハブのList
+    private List<GameObject> clonePrefabs;  // Clone対象となるMoneyプレハブのList
+    [SerializeField]
+    private List<GameObject> moneyPrefabs;  // 実際にcloneするMoneyプレハブのList
     private List<GameObject> _moneyPregabs = new List<GameObject>();
     private bool prefabIsSet;
 
 
     private void Start()
     {
-        enemyStatusModel = GetComponent<EnemyStatusModel>();
+        model = GetComponent<EnemyStatusModel>();
         prefabIsSet = false;
+
+        foreach(var prefab in clonePrefabs)
+        {
+            
+        }
 
         for (int i = 0; i < moneyPrefabs.Count; i++)
         {
@@ -44,7 +50,7 @@ public class MoneyStocker : MonoBehaviour
         // CloneしたプレハブをModelのListに追加
         if (!prefabIsSet)
         {
-            enemyStatusModel.MoneyPrefabs = _moneyPregabs;
+            model.MoneyPrefabs = _moneyPregabs;
             prefabIsSet = true;
         }
     }

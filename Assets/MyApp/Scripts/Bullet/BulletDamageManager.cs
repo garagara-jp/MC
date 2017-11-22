@@ -15,7 +15,7 @@ public class BulletDamageManager : MonoBehaviour
         model = GetComponent<BulletStatusModel>();
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         var damageable = col.GetComponent<IDamageable>();
         if (damageable != null)

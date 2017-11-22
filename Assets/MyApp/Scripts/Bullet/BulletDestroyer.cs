@@ -8,26 +8,29 @@ using UnityEngine;
 /// </summary>
 public class BulletDestroyer : MonoBehaviour
 {
-    BulletStatusModel bulletStatusModel;
+    BulletStatusModel model;
 
     private void Start()
     {
-        bulletStatusModel = GetComponent<BulletStatusModel>();
+        model = GetComponent<BulletStatusModel>();
     }
 
     private void Update()
     {
-        if (bulletStatusModel.IsDestroyed)
+        if (model.IsDestroyed)
         {
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
+        if (model == null)
+            return;
+
         if (col.gameObject.tag == "Stage" || col.gameObject.tag == "Enemy")
         {
-            bulletStatusModel.IsDestroyed = true;
+            model.IsDestroyed = true;
         }
     }
 }

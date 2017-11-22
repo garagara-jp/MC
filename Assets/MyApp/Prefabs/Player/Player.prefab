@@ -108,8 +108,8 @@ MonoBehaviour:
   bulletPrafab: {fileID: 1034553977091438, guid: b8632ae756e3cfb48a7ce3f743597abf,
     type: 2}
   bulletPower: 10
-  bulletSpeed: 10
-  attackInterval: 0.3
+  bulletSpeed: 18
+  attackInterval: 0.2
 --- !u!114 &114121230080642262
 MonoBehaviour:
   m_ObjectHideFlags: 1

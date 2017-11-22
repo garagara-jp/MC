@@ -9,19 +9,16 @@ public class EnemyLocomotor : MonoBehaviour
     private Vector2 startVec;
     private float angle = 0f;
     [SerializeField]
-    private float upDownRange = 0.06f;
+    private float upDownRange = 3f;
     [SerializeField]
     private float Yspeed = 3f;
     [SerializeField]
     private float Xspeed = 2f;
 
-    [SerializeField]
-    private float t = 0;
-
     private void Start()
     {
         model = GetComponent<EnemyStatusModel>();
-        startVec = transform.position;
+        angle = (model.EnemyType == EnemyType.Flow) ? 90 : 0;
     }
 
     void Update()
@@ -29,21 +26,24 @@ public class EnemyLocomotor : MonoBehaviour
         if (model.EnemyType == EnemyType.Flow)
         {
             Vector2 newVec = transform.position;
-            angle = (angle % 360 != 180) ? angle % 360 : 0;     // sin計算用にアングルを調整
-            newVec.y = Mathf.Sin(angle * Mathf.Deg2Rad) * upDownRange + newVec.y;
-            angle += Yspeed * Time.deltaTime;
+            //angle = angle % 360;     // sin計算用にアングルを調整
+            newVec.y = Mathf.Sin(angle * Mathf.Deg2Rad) * upDownRange * Time.deltaTime + newVec.y;
+            angle += Yspeed;
+            if (angle > 450)
+                angle = 90;
             newVec.x += Xspeed * Time.deltaTime;
             transform.position = newVec;
         }
         else if (model.EnemyType == EnemyType.Ground)
         {
             Vector2 newVec = transform.position;
-            angle = angle % 180;     // sin計算用にアングルを調整
-            newVec.y = Mathf.Cos(angle * Mathf.Deg2Rad) * upDownRange + newVec.y;
-            angle += Yspeed * Time.deltaTime;
+            //angle = angle % 180;     // sin計算用にアングルを調整
+            newVec.y = Mathf.Cos(angle * Mathf.Deg2Rad) * upDownRange * Time.deltaTime + newVec.y;
+            angle += Yspeed;
+            if (angle > 180)
+                angle = 0;
             newVec.x += Xspeed * Time.deltaTime;
             transform.position = newVec;
         }
-        var rt = (t % 360 != 180) ? t % 360 : 0;
     }
 }

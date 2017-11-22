@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576f2613f8040184285eb1edaf12f69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upDownRange: 0.06
-  Yspeed: 3
-  Xspeed: 4
-  t: 0
+  upDownRange: 6
+  Yspeed: 6
+  Xspeed: 3.5
 --- !u!114 &114187388079364022
 MonoBehaviour:
   m_ObjectHideFlags: 1

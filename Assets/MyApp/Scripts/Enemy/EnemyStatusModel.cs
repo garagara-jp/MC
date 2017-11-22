@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType { Flow, Ground }
+public enum EnemySize { S, L }
+
 public class EnemyStatusModel : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyType enemyType;
+    [SerializeField]
+    private EnemySize enemySize;
     [SerializeField]
     private float hitPoint = 100f;
     [SerializeField]
@@ -19,6 +26,8 @@ public class EnemyStatusModel : MonoBehaviour
     [SerializeField]
     private bool isDead = false;
 
+    public EnemyType EnemyType { get { return enemyType; } }
+    public EnemySize EnemySize { get { return enemySize; } }
     public float HitPoint { get; set; }
     public float EnemyPower { get; set; }
     public float MoveSpeed { get; set; }
@@ -28,6 +37,10 @@ public class EnemyStatusModel : MonoBehaviour
     public bool IsDead { get; set; }
     public bool IsHaveMoney { get; set; }
     public List<GameObject> MoneyPrefabs { get; set; }  // Enemyの所持するMoneyプレハブ
+
+    public int LcoinNum { get; set; }
+    public int ScoinNum { get; set; }
+    public int JewelNum { get; set; }
 
     private void Start()
     {
@@ -46,7 +59,7 @@ public class EnemyStatusModel : MonoBehaviour
     public void ModelInitialization()
     {
         HitPoint = hitPoint;
-        EnemyPower = enemyPower; 
+        EnemyPower = enemyPower;
         MoveSpeed = moveSpeed;
         RotationSpeed = rotationSpeed;
         JumpPower = jumpPower;

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerManager
 {
-    // このクラスはタンクの様々な設定を管理するためのものです。
-    // このクラスは GameManager クラスと一緒に使い、タンクの挙動と、プレイヤーがゲームのさまざまな段階で
-    // タンクを制御するかを支配します。
-
     public Transform SpawnPoint;        // Playerが生成されたときの場所と向き
     [HideInInspector]
     public int PlayerNumber;            // Playerの識別番号

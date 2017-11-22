@@ -100,7 +100,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                                                         PlayerManagerList[i].SpawnPoint.rotation);
             PlayerManagerList[i].PlayerNumber = playerNumber[i];
             PlayerManagerList[i].Setup();
-            Debug.Log(playerNumber[i] + "番のプレイヤーをセットアップ");
+            //Debug.Log(playerNumber[i] + "番のプレイヤーをセットアップ");
         }
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
-    private List<bool> playerIsDead = new List<bool>();
+    private List<PlayerStatusModel> models = new List<PlayerStatusModel>();
 
     [SerializeField]
     private bool battleIsStarted = false;
@@ -23,6 +23,11 @@ public class BattleManager : MonoBehaviour
     {
         get { return battleIsStarted; }
         set { battleIsStarted = value; }
+    }
+
+    private void Awake()
+    {
+        GameManager.Instance.SetCurrentState(GameState.Prepare);
     }
 
     private void Start()
@@ -44,7 +49,7 @@ public class BattleManager : MonoBehaviour
             // 各プレイヤーの生死状態を配列に格納
             for (int i = 0; i < GameManager.Instance.PlayerManagerList.Count; i++)
             {
-                playerIsDead.Add(GameManager.Instance.PlayerManagerList[i].PlayerInstance.GetComponent<PlayerStatusModel>().IsDead);
+                models.Add(GameManager.Instance.PlayerManagerList[i].PlayerInstance.GetComponent<PlayerStatusModel>());
             }
 
             _battleIsStarted = true;
@@ -56,8 +61,10 @@ public class BattleManager : MonoBehaviour
         {
             DoSpawn = true;
 
+            var check = CheckAllPlayerDeath();
+            Debug.Log("mesoddo:" + check);
             // バトル終了処理
-            if (TimeManager.Instance.RemainingTIme <= 0 || CheckAllPlayerDeath())
+            if (TimeManager.Instance.RemainingTIme <= 0 || check)
             {
                 GameManager.Instance.SetCurrentState(GameState.Result);
                 DoSpawn = false;
@@ -81,9 +88,9 @@ public class BattleManager : MonoBehaviour
     private bool CheckAllPlayerDeath()
     {
         var allPlayerIsDead = true;
-        for (int i = 0; i < playerIsDead.Count; i++)
+        for (int i = 0; i < models.Count; i++)
         {
-            if (!playerIsDead[i])
+            if (!models[i].IsDead)
                 allPlayerIsDead = false;
         }
 

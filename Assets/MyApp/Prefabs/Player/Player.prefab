@@ -22,12 +22,13 @@ GameObject:
   - component: {fileID: 212527787157885616}
   - component: {fileID: 50880975985657710}
   - component: {fileID: 61654852456474170}
-  - component: {fileID: 114121230080642262}
   - component: {fileID: 114666758194906148}
   - component: {fileID: 114231633093831010}
   - component: {fileID: 114044353341953462}
+  - component: {fileID: 114121230080642262}
   - component: {fileID: 114874223433758624}
   - component: {fileID: 114511915199787564}
+  - component: {fileID: 114475925517129410}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -121,9 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb2d0b32a5f19e42b330d26f1c7f64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpPower: 500
-  rotationSpeed: 5
   mask:
     serializedVersion: 2
     m_Bits: 256
@@ -143,6 +141,19 @@ MonoBehaviour:
   rotationSpeed: 5
   jumpPower: 400
   playerMoney: 0
+--- !u!114 &114475925517129410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1585519674466788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff409c317663447b8533c8f4abc214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mutekiTime: 3
+  knockBackPower: 300
 --- !u!114 &114511915199787564
 MonoBehaviour:
   m_ObjectHideFlags: 1

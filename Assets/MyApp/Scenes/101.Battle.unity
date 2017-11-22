@@ -2220,6 +2220,21 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212527787157885616, guid: b97645014b8e27945b4a6e7e74fee6ed,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212527787157885616, guid: b97645014b8e27945b4a6e7e74fee6ed,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212527787157885616, guid: b97645014b8e27945b4a6e7e74fee6ed,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b97645014b8e27945b4a6e7e74fee6ed, type: 2}
   m_IsPrefabParent: 0
@@ -2428,6 +2443,11 @@ Prefab:
       propertyPath: playerLifeValue
       value: 
       objectReference: {fileID: 1686484298}
+    - target: {fileID: 114821315880193842, guid: fda206d6f5f6d77428ab61d8ea8228bd,
+        type: 2}
+      propertyPath: limitTime
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fda206d6f5f6d77428ab61d8ea8228bd, type: 2}
   m_IsPrefabParent: 0

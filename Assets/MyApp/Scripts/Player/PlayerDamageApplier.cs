@@ -14,6 +14,7 @@ public class PlayerDamageApplier : MonoBehaviour, IDamageable
     public void ApplyDamage(Damage damage)
     {
         model.HitPoint -= damage.DamageAmount;
+        model.IsDamaged = true;
         //Debug.Log(gameObject.tag + " Left HP : " + model.HitPoint);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Testシーンを管理
+/// Battleシーンを管理
 /// SceneManagerにアタッチ
 /// </summary>
 public class SceneManager101 : MonoBehaviour

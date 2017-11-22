@@ -9,6 +9,10 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField]
+    private bool battleIsStarted = true;
+    private bool _battleIsStarted = false;
+
+    [SerializeField]
     private float limitTime = 180;
 
     public bool DoSpawn { get; set; }
@@ -22,6 +26,13 @@ public class BattleManager : MonoBehaviour
 
     private void Update()
     {
+        if (battleIsStarted && !_battleIsStarted)
+        {
+            GameManager.Instance.SetCurrentState(GameState.Battle);
+            TimeManager.Instance.StartBattle(limitTime);
+            _battleIsStarted = true;
+        }
+
         // バトル開始処理
         if (GameManager.Instance.currentGameState == GameState.Battle)
         {
@@ -41,11 +52,11 @@ public class BattleManager : MonoBehaviour
 
     private void OnGUI()
     {
-        var startButton = GUI.Button(new Rect(20, 20, 100, 40), "Start");
-        if (startButton)
-        {
-            GameManager.Instance.SetCurrentState(GameState.Battle);
-            TimeManager.Instance.StartBattle(limitTime);
-        }
+        //var startButton = GUI.Button(new Rect(20, 20, 100, 40), "Start");
+        //if (startButton)
+        //{
+        //    GameManager.Instance.SetCurrentState(GameState.Battle);
+        //    TimeManager.Instance.StartBattle(limitTime);
+        //}
     }
 }

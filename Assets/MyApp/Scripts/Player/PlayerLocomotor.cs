@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class PlayerLocomotor : MonoBehaviour
 {
+    PlayerStatusModel model;
     Rigidbody2D rb2d;
     private Dictionary<string, int> moveDirection = new Dictionary<string, int>();
-    private Vector2 playerVelocity;
-    [SerializeField]
-    private float moveSpeed = 3f;
-    private Vector2 HorizontalMoveVelocity;
-    [SerializeField]
-    private float jumpPower = 30f;
-    private Vector2 JumpMoveVelocity;
-    [SerializeField]
-    private float rotationSpeed = 3f;
+
+    private bool isknocking = false;
     private bool rotationTrigger = false;
     private int rotationDir;
     [SerializeField]
@@ -22,11 +16,11 @@ public class PlayerLocomotor : MonoBehaviour
 
     void Start()
     {
+        model = GetComponent<PlayerStatusModel>();
         rb2d = GetComponent<Rigidbody2D>();
         moveDirection.Add("left", -1);
         moveDirection.Add("right", 1);
         moveDirection.Add("pause", 0);
-        playerVelocity = Vector2.zero;
     }
 
     void Update()
@@ -50,11 +44,11 @@ public class PlayerLocomotor : MonoBehaviour
         //　移動処理
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(moveDirection["right"] * moveSpeed * Time.deltaTime, 0, 0, Space.World);
+            transform.Translate(moveDirection["right"] * model.MoveSpeed * Time.deltaTime, 0, 0, Space.World);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(moveDirection["left"] * moveSpeed * Time.deltaTime, 0, 0, Space.World);
+            transform.Translate(moveDirection["left"] * model.MoveSpeed * Time.deltaTime, 0, 0, Space.World);
         }
     }
 
@@ -65,14 +59,6 @@ public class PlayerLocomotor : MonoBehaviour
         {
             JumpMove();
         }
-
-        //rb2d.velocity = playerVelocity;
-    }
-
-    private void HorizontalMove(int dir)
-    {
-        HorizontalMoveVelocity = Vector2.left * dir * moveSpeed;
-        playerVelocity += HorizontalMoveVelocity;
     }
 
     private void JumpMove()
@@ -81,7 +67,7 @@ public class PlayerLocomotor : MonoBehaviour
         float rayDis = 3.5f;
         if (Physics2D.Raycast(transform.position, -Vector3.up, transform.localScale.y * rayDis, mask))
         {
-            rb2d.AddForce(Vector2.up * jumpPower);
+            rb2d.AddForce(Vector2.up * model.JumpPower);
         }
         //Debug.DrawRay(transform.position, -Vector3.up * transform.localScale.y * rayDis, Color.red, 2, false);
     }
@@ -89,7 +75,7 @@ public class PlayerLocomotor : MonoBehaviour
     private void RotateAroundUpAxis(int dir)
     {
         var targetRotation = Quaternion.Euler(0, 90 + dir * 90, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * model.RotationSpeed);
 
         // 回転がだいたい終わったらTriggerをOFFにして角度を固定
         if (Mathf.Approximately(Quaternion.Angle(transform.rotation, targetRotation), 0f))

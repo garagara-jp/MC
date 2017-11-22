@@ -22,11 +22,21 @@ public class PlayerStatusModel : MonoBehaviour
     public float RotationSpeed { get; set; }
     public float JumpPower { get; set; }
     public float PlayerMoney { get; set; }
+    public bool IsDamaged { get; set; }
+    public bool IsDead { get; set; }
 
     private void Start()
     {
         // Statusの初期化処理
         ModelInitialization();
+    }
+
+    private void Update()
+    {
+        if(HitPoint <= 0)
+        {
+            IsDead = true;
+        }
     }
 
     public void ModelInitialization()
@@ -36,5 +46,7 @@ public class PlayerStatusModel : MonoBehaviour
         RotationSpeed = rotationSpeed;
         JumpPower = jumpPower;
         PlayerMoney = playerMoney;
+        IsDamaged = false;
+        IsDead = false;
     }
 }

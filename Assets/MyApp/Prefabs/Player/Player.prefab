@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b328076de0f030741b9ae7fe080805f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 10
+  hitPoint: 70
   moveSpeed: 5
   rotationSpeed: 5
   jumpPower: 400

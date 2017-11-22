@@ -6,6 +6,7 @@ using System;
 public enum GameState
 {
     Title,
+    CharacterSelect,
     Prepare,
     Battle,
     Result,
@@ -64,7 +65,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         switch (state)
         {
             case GameState.Title:
-                //StartAction();
+                ResetPlayerList();
                 break;
             case GameState.Prepare:
                 SpawnAllPlayer();
@@ -82,12 +83,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
+    private void ResetPlayerList()
+    {
+        PlayerManagerList = new List<PlayerManager>();
+    }
+
     private void SpawnAllPlayer()
     {
         // プレイヤーの参加人数分だけPlayerManagerを作成
-        for (int i = 0; i < playerTotalNumber; i++)
+        if (PlayerManagerList.Count == 0)
         {
-            PlayerManagerList.Add(new PlayerManager());
+            for (int i = 0; i < playerTotalNumber; i++)
+            {
+                PlayerManagerList.Add(new PlayerManager());
+            }
         }
 
         for (int i = 0; i < PlayerManagerList.Count; i++)

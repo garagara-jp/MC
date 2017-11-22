@@ -25,11 +25,6 @@ public class BattleManager : MonoBehaviour
         set { battleIsStarted = value; }
     }
 
-    private void Awake()
-    {
-        GameManager.Instance.SetCurrentState(GameState.Prepare);
-    }
-
     private void Start()
     {
         DoSpawn = false;

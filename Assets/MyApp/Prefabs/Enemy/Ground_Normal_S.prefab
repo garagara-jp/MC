@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upDownRange: 0.06
   Yspeed: 3
-  Xspeed: 2
+  Xspeed: 4
   t: 0
 --- !u!114 &114187388079364022
 MonoBehaviour:

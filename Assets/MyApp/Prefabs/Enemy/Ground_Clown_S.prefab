@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 114747295784196648}
   - component: {fileID: 114463610027121366}
   m_Layer: 11
-  m_Name: Ground_Cloen_S
+  m_Name: Ground_Clown_S
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upDownRange: 0.1
   Yspeed: 300
-  Xspeed: 3
+  Xspeed: 4
   t: 0
 --- !u!114 &114080186105777438
 MonoBehaviour:

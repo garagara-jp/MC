@@ -12,7 +12,7 @@ public class EnemyAttackModel : MonoBehaviour
     private float bulletPower = 10f;
     [SerializeField]
     private float bulletSpeed = 3f;
-    [SerializeField]
+    [SerializeField,Range(0,10)]
     private float attackInterval = 0.3f;
 
     public int WeaponID { get; set; }

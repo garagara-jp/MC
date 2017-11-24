@@ -57,7 +57,6 @@ public class BattleManager : MonoBehaviour
             DoSpawn = true;
 
             var check = CheckAllPlayerDeath();
-            Debug.Log("mesoddo:" + check);
             // バトル終了処理
             if (TimeManager.Instance.RemainingTIme <= 0 || check)
             {

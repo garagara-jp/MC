@@ -58,7 +58,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1.71, y: -0.84}
@@ -75,10 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576f2613f8040184285eb1edaf12f69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upDownRange: 0.1
-  Yspeed: 300
-  Xspeed: 3
-  t: 0
+  upDownRange: 2
+  Yspeed: 3
+  Xspeed: 2
 --- !u!114 &114080186105777438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edf30c32ff746644abc01dfd41c92b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
+  enemyType: 1
   isClown: 1
   enemySize: 1
   hitPoint: 10
@@ -145,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 1
-  bulletPrafab: {fileID: 1311320939582768, guid: f29f8a3cc36203a4f942a2158595101a,
+  bulletPrafab: {fileID: 1918061993213296, guid: 8b0063439e476164f80321af49885620,
     type: 2}
   bulletPower: 10
   bulletSpeed: 3

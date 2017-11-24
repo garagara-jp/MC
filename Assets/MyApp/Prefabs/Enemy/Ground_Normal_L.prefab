@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114080186105777438}
   - component: {fileID: 114747295784196648}
   - component: {fileID: 114151478142368720}
+  - component: {fileID: 114587698143489340}
   m_Layer: 11
   m_Name: Ground_Normal_L
   m_TagString: Enemy
@@ -121,6 +122,18 @@ MonoBehaviour:
   jumpPower: 400
   enemyMoney: 100
   isDead: 0
+--- !u!114 &114587698143489340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071629294714212}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f053b935eacf1b947bdb64bd219ff39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &114747295784196648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 1
-  bulletPrafab: {fileID: 1311320939582768, guid: f29f8a3cc36203a4f942a2158595101a,
+  bulletPrafab: {fileID: 1918061993213296, guid: 8b0063439e476164f80321af49885620,
     type: 2}
   bulletPower: 10
   bulletSpeed: 3

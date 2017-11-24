@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// 各EnemySpawnオブジェクトにアタッチ
@@ -15,6 +16,10 @@ public class EnemySpawner : MonoBehaviour
     private float spawnIntervalRandomRange = 1;
     [SerializeField]
     private bool doSpawn = true;
+    [SerializeField]
+    private bool isUsingConstSeed = false;
+    [SerializeField]
+    private int constSeed = 1;
 
     [SerializeField]
     private List<GameObject> enemyPrefabs;
@@ -28,17 +33,17 @@ public class EnemySpawner : MonoBehaviour
     // スポーン処理
     private IEnumerator SpawnEnemy(float second)
     {
-        var seed = 1;
-        Random.InitState(XXHashCalculator.GetXXHash(seed));
+        var seed = (isUsingConstSeed) ? constSeed : Environment.TickCount;
+        Debug.Log(seed);
+        UnityEngine.Random.InitState(XXHashCalculator.GetXXHash(seed));
 
         while (true)
         {
             while (battleManager.DoSpawn && doSpawn)
             {
-
                 // リスト内のプレハブのランダムに返す
-                var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count - 1)], transform.position, transform.rotation);
-                yield return new WaitForSeconds(Random.Range(second - spawnIntervalRandomRange / 2, second + spawnIntervalRandomRange / 2));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(second - spawnIntervalRandomRange / 2, second + spawnIntervalRandomRange / 2));
+                var enemy = Instantiate(enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count - 1)], transform.position, transform.rotation);
             }
             yield return new WaitForSeconds(second);
         }

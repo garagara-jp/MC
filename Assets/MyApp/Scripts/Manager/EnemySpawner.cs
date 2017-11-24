@@ -34,7 +34,6 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemy(float second)
     {
         var seed = (isUsingConstSeed) ? constSeed : Environment.TickCount;
-        Debug.Log(seed);
         UnityEngine.Random.InitState(XXHashCalculator.GetXXHash(seed));
 
         while (true)

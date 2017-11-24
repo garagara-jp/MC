@@ -15,6 +15,8 @@ public class SceneManager101 : MonoBehaviour
     private Transform playerSpawnPoint;
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private AudioSource BGM;
 
     private void Awake()
     {

@@ -17,6 +17,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private float limitTime = 180;
 
+    [SerializeField]
+    private AudioSource BGM;
+
     public bool DoSpawn { get; set; }
     public bool IsPause { get; set; }
     public bool BattleIsStarted

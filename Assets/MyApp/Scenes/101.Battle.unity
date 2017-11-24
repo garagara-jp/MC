@@ -439,8 +439,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 164568272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392, y: 245, z: 0}
-  m_LocalScale: {x: 0.40833333, y: 0.40833333, z: 0.40833333}
+  m_LocalPosition: {x: 416, y: 260, z: 0}
+  m_LocalScale: {x: 0.43333334, y: 0.43333334, z: 0.43333334}
   m_Children:
   - {fileID: 978522528}
   - {fileID: 461347421}
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1118545143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a89c697378d6641b618bcbdd81b7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: a30873b6600a5b24d9bbf6e74ae4abb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 101.Battle
@@ -3062,7 +3062,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738368343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a89c697378d6641b618bcbdd81b7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: a30873b6600a5b24d9bbf6e74ae4abb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 001.Title

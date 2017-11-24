@@ -335,7 +335,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 384412448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a89c697378d6641b618bcbdd81b7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: a30873b6600a5b24d9bbf6e74ae4abb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 101.Battle
@@ -698,7 +698,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1355017978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392, y: 245, z: 0}
+  m_LocalPosition: {x: 416, y: 260, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 384412449}

@@ -11,9 +11,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyApp/Scenes/101.Battle.unity
     guid: 574f1fb3b5f377249a766709bb867956
-  - enabled: 1
-    path: Assets/Test/Scenes/TestTitle.unity
-    guid: 3f83c5a522085b14ba403cbf767e045a
-  - enabled: 1
-    path: Assets/Test/Scenes/test.unity
-    guid: 382e8d4f28852a94f93c8204019fd84d

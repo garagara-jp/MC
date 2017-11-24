@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: dd708fc037599ed4989ea7bdd99583e8
+timeCreated: 1511514982
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KH Dot kagurazaka 16
+  fontNames:
+  - KH Dot kagurazaka 16
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

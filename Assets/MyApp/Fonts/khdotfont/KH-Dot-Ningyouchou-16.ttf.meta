@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e13f7d398f4715d459591b85a0c9c2fc
+timeCreated: 1511514982
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KH Dot Ningyouchou 16
+  fontNames:
+  - KH Dot Ningyouchou 16
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

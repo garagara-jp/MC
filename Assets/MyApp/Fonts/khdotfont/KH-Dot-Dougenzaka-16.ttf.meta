@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ac02d3db9a58b6744b63f8c14726fe34
+timeCreated: 1511514982
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KH Dot Dougenzaka 16
+  fontNames:
+  - KH Dot Dougenzaka 16
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

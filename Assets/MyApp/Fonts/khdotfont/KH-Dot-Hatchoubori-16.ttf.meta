@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 574cc789f4fcf2046a6a138e55b0e53c
+timeCreated: 1511514981
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KH Dot Hatcyoubori 16
+  fontNames:
+  - KH Dot Hatcyoubori 16
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

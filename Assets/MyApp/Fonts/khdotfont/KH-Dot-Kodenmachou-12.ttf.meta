@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9d9e66596893b4648a87a4ecca460bc7
+timeCreated: 1511514981
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KH Dot Kodenmachou 12
+  fontNames:
+  - KH Dot Kodenmachou 12
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

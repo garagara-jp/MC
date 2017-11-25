@@ -49,6 +49,8 @@ public class BattleManager : MonoBehaviour
             {
                 models.Add(GameManager.Instance.PlayerManagerList[i].PlayerInstance.GetComponent<PlayerStatusModel>());
             }
+            // BGMを再生
+            AudioManager.Instance.PlayBGM(BGM);
 
             _battleIsStarted = true;
             return;

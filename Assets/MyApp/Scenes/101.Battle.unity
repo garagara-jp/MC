@@ -3777,7 +3777,7 @@ Prefab:
     - target: {fileID: 114821315880193842, guid: fda206d6f5f6d77428ab61d8ea8228bd,
         type: 2}
       propertyPath: limitTime
-      value: 5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 114014313047350190, guid: fda206d6f5f6d77428ab61d8ea8228bd,
         type: 2}

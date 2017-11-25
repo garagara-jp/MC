@@ -9,7 +9,7 @@ public class SceneChangeButtonController : MonoBehaviour
     Button btn;
 
     //どんな名前でもいいのでstring型のフィールドに付ける
-    [SerializeField, SceneChangerAttribute]
+    [SerializeField]
     string nextScene;
 
     private void Start()

@@ -9,6 +9,6 @@ MoneyCollectは、制限時間内に敵を倒しつつ降ってくるお金を�
 - Unity 2017.2.0f3
 - [UniRx](https://assetstore.unity.com/packages/tools/integration/unirx-reactive-extensions-for-unity-17276)
 
-## Lisence
+## License
 
 MIT

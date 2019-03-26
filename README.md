@@ -4,6 +4,10 @@
 
 MoneyCollectは、制限時間内に敵を倒しつつ降ってくるお金を集めてスコアを競うミニゲームです。
 
+以下のURLよりプレイ動画をご覧頂けます。
+
+https://www.youtube.com/watch?v=W0Q-CboYy0g
+
 ## Envelopment
 
 - Unity 2017.2.0f3
